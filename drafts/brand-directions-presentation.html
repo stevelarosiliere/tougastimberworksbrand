@@ -1,0 +1,2005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tougas Timberworks — Brand Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&family=Oswald:wght@400;500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #0A0A0A;
+    font-family: 'DM Sans', sans-serif;
+    color: #FAFAF9;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .deck {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 80px;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    pointer-events: none;
+  }
+
+  .slide.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+
+  .slide.exit {
+    opacity: 0;
+    transform: translateY(-12px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  /* Slide counter */
+  .slide-counter {
+    position: fixed;
+    bottom: 28px;
+    right: 36px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(250,250,249,0.35);
+    letter-spacing: 0.08em;
+    z-index: 100;
+    user-select: none;
+  }
+
+  /* Navigation hints */
+  .nav-hint {
+    position: fixed;
+    bottom: 28px;
+    left: 36px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(250,250,249,0.2);
+    letter-spacing: 0.05em;
+    z-index: 100;
+    user-select: none;
+  }
+
+  /* Divider line */
+  .rule {
+    width: 48px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.3;
+    margin: 20px 0;
+  }
+
+  /* --- SLIDE 1: TITLE --- */
+  .slide-01 {
+    background: #1C1917;
+    text-align: center;
+  }
+
+  .slide-01 .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(250,250,249,0.4);
+    margin-bottom: 28px;
+  }
+
+  .slide-01 h1 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(48px, 6vw, 80px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: #FAFAF9;
+    margin-bottom: 12px;
+  }
+
+  .slide-01 h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(20px, 2.5vw, 30px);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: rgba(250,250,249,0.5);
+    margin-bottom: 48px;
+  }
+
+  .slide-01 .prepared-by {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(250,250,249,0.3);
+    letter-spacing: 0.06em;
+  }
+
+  /* --- SLIDE 2: WHAT WE HEARD --- */
+  .slide-02 {
+    background: #111111;
+    align-items: flex-start;
+    padding: 60px 80px;
+  }
+
+  .slide-02-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .slide-02-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slide-02-photo {
+    width: 100%;
+    height: 70vh;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .slide-02-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .slide-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(250,250,249,0.3);
+    margin-bottom: 20px;
+  }
+
+  .slide-02 h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(24px, 2.8vw, 36px);
+    font-weight: 700;
+    color: #FAFAF9;
+    margin-bottom: 32px;
+    line-height: 1.15;
+  }
+
+  .heard-items {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+  }
+
+  .heard-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .heard-item .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(217, 119, 6, 0.7);
+    margin-top: 10px;
+    flex-shrink: 0;
+  }
+
+  .heard-item p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(14px, 1.4vw, 16px);
+    font-weight: 400;
+    line-height: 1.65;
+    color: rgba(250,250,249,0.75);
+  }
+
+  /* --- SLIDE 2B: PHOTO COLLAGE --- */
+  .slide-02b {
+    background: #111111;
+    text-align: center;
+  }
+
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 8px;
+    width: 100%;
+    max-width: 1000px;
+    height: 65vh;
+    margin: 0 auto;
+  }
+
+  .photo-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 3px;
+  }
+
+  .photo-grid .photo-label {
+    position: absolute;
+    bottom: 8px;
+    left: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  }
+
+  .photo-grid .photo-cell {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+  }
+
+  /* --- SLIDE 3: BRAND PERSONALITY --- */
+  .slide-03 {
+    background: #1C1917;
+    text-align: center;
+  }
+
+  .slide-03 .tagline-pre {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(250,250,249,0.3);
+    margin-bottom: 24px;
+  }
+
+  .slide-03 h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: #FAFAF9;
+    margin-bottom: 32px;
+    line-height: 1.1;
+  }
+
+  .slide-03 .tension {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(16px, 1.8vw, 20px);
+    font-weight: 400;
+    color: rgba(250,250,249,0.6);
+    max-width: 620px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+
+  .tagline-lockup {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(14px, 1.5vw, 18px);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #D97706;
+  }
+
+  /* --- SLIDE 4: THREE DIRECTIONS --- */
+  .slide-04 {
+    background: #111111;
+    text-align: center;
+  }
+
+  .slide-04 h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 700;
+    color: #FAFAF9;
+    margin-bottom: 16px;
+    line-height: 1.15;
+  }
+
+  .slide-04 .intro-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(15px, 1.6vw, 18px);
+    font-weight: 400;
+    color: rgba(250,250,249,0.55);
+    max-width: 560px;
+    line-height: 1.65;
+    margin-bottom: 48px;
+  }
+
+  .directions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .direction-item {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(18px, 2vw, 22px);
+    font-weight: 600;
+    color: #FAFAF9;
+    letter-spacing: 0.01em;
+  }
+
+  .direction-item span {
+    color: rgba(250,250,249,0.35);
+    font-weight: 400;
+  }
+
+  .slide-04 .walk-through {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(250,250,249,0.3);
+    letter-spacing: 0.06em;
+  }
+
+  /* --- DIRECTION TITLE CARDS (common) --- */
+  .dir-title-card {
+    text-align: center;
+  }
+
+  .dir-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(250,250,249,0.3);
+    margin-bottom: 20px;
+  }
+
+  .dir-name {
+    font-size: clamp(40px, 5.5vw, 72px);
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .dir-line {
+    font-size: clamp(16px, 1.8vw, 20px);
+    font-weight: 400;
+    color: rgba(250,250,249,0.65);
+    max-width: 520px;
+    line-height: 1.6;
+    margin-bottom: 44px;
+  }
+
+  /* Color Swatches */
+  .swatches {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .swatch-color {
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+    border: 1px solid rgba(250,250,249,0.08);
+  }
+
+  .swatch-hex {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    color: rgba(250,250,249,0.3);
+    letter-spacing: 0.05em;
+  }
+
+  /* --- SLIDE 5: DIR A TITLE --- */
+  .slide-05 {
+    background: #1C1917;
+  }
+
+  .slide-05 .dir-name {
+    font-family: 'DM Sans', sans-serif;
+    color: #FAFAF9;
+  }
+
+  /* --- SLIDE 6: DIR A VISUAL --- */
+  .slide-06 {
+    background: #1C1917;
+    align-items: flex-start;
+  }
+
+  .visual-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .wordmark-a {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px;
+    background: #292524;
+    border: 1px solid rgba(250,250,249,0.06);
+  }
+
+  .wordmark-a .wm-main {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(32px, 3.5vw, 48px);
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #FAFAF9;
+    line-height: 1;
+  }
+
+  .wordmark-a .wm-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(14px, 1.5vw, 18px);
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(250,250,249,0.6);
+    margin-top: 4px;
+  }
+
+  .wordmark-a .wm-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #D97706;
+    margin-top: 14px;
+  }
+
+  .visual-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .type-spec {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .type-spec-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(250,250,249,0.3);
+  }
+
+  .type-spec-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: rgba(250,250,249,0.8);
+  }
+
+  .type-spec-detail {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(250,250,249,0.4);
+    line-height: 1.5;
+  }
+
+  .feel-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(14px, 1.4vw, 16px);
+    font-weight: 400;
+    color: rgba(250,250,249,0.55);
+    line-height: 1.65;
+    padding-top: 12px;
+    border-top: 1px solid rgba(250,250,249,0.08);
+  }
+
+  /* --- SLIDE 7: DIR A COPY --- */
+  .slide-07 {
+    background: #1C1917;
+    align-items: flex-start;
+  }
+
+  .copy-showcase-a {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .copy-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .copy-role {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(250,250,249,0.3);
+  }
+
+  .copy-a-hero {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(28px, 3.5vw, 46px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: #FAFAF9;
+    text-transform: uppercase;
+  }
+
+  .copy-a-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(15px, 1.6vw, 17px);
+    font-weight: 400;
+    line-height: 1.65;
+    color: rgba(250,250,249,0.6);
+  }
+
+  .copy-a-cta {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #D97706;
+    border-bottom: 1px solid #D97706;
+    padding-bottom: 2px;
+  }
+
+  /* --- SLIDE 8: DIR A TRADEOFFS --- */
+  .slide-08 {
+    background: #111111;
+    align-items: flex-start;
+  }
+
+  /* --- SLIDES 9-12: DIR B --- */
+  .slide-09 {
+    background: #FAFAF9;
+    color: #1C1917;
+  }
+
+  .slide-09 .dir-label {
+    color: rgba(28,25,23,0.35);
+  }
+
+  .slide-09 .dir-name {
+    font-family: 'Playfair Display', serif;
+    color: #1C1917;
+  }
+
+  .slide-09 .dir-line {
+    color: rgba(28,25,23,0.6);
+  }
+
+  .slide-10 {
+    background: #FAFAF9;
+    color: #1C1917;
+    align-items: flex-start;
+  }
+
+  .wordmark-b {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px;
+    background: #F5F5F4;
+    border: 1px solid rgba(28,25,23,0.08);
+  }
+
+  .wordmark-b .wm-main {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 3.5vw, 48px);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: #1C1917;
+    line-height: 1;
+  }
+
+  .wordmark-b .wm-sub {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: clamp(14px, 1.4vw, 17px);
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: rgba(28,25,23,0.5);
+    margin-top: 4px;
+  }
+
+  .wordmark-b .wm-tag {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #92400E;
+    margin-top: 14px;
+  }
+
+  .visual-layout-b {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .visual-right-b {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .type-spec-label-b {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(28,25,23,0.35);
+  }
+
+  .type-spec-name-b {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: rgba(28,25,23,0.8);
+  }
+
+  .type-spec-detail-b {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(28,25,23,0.45);
+    line-height: 1.5;
+  }
+
+  .feel-text-b {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: clamp(14px, 1.4vw, 16px);
+    font-weight: 400;
+    color: rgba(28,25,23,0.55);
+    line-height: 1.65;
+    padding-top: 12px;
+    border-top: 1px solid rgba(28,25,23,0.1);
+  }
+
+  .slide-11 {
+    background: #FAFAF9;
+    color: #1C1917;
+    align-items: flex-start;
+  }
+
+  .copy-b-hero {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 46px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    color: #1C1917;
+  }
+
+  .copy-b-body {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: clamp(15px, 1.6vw, 17px);
+    font-weight: 400;
+    line-height: 1.65;
+    color: rgba(28,25,23,0.6);
+  }
+
+  .copy-b-cta {
+    display: inline-block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #92400E;
+    border-bottom: 1px solid #92400E;
+    padding-bottom: 2px;
+  }
+
+  .copy-role-b {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(28,25,23,0.3);
+  }
+
+  .slide-12 {
+    background: #111111;
+    align-items: flex-start;
+  }
+
+  /* --- SLIDES 13-16: DIR C --- */
+  .slide-13 {
+    background: #292524;
+    color: #FAFAF9;
+  }
+
+  .slide-13 .dir-label {
+    color: rgba(250,250,249,0.3);
+  }
+
+  .slide-13 .dir-name {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #FAFAF9;
+  }
+
+  .slide-13 .dir-line {
+    color: rgba(250,250,249,0.6);
+  }
+
+  .slide-14 {
+    background: #292524;
+    color: #FAFAF9;
+    align-items: flex-start;
+  }
+
+  .badge-wordmark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 36px 48px;
+    border: 2px solid rgba(250,250,249,0.7);
+    outline: 1px solid rgba(250,250,249,0.2);
+    outline-offset: 6px;
+    text-align: center;
+    gap: 4px;
+  }
+
+  .badge-wordmark .bw-gen {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(250,250,249,0.5);
+  }
+
+  .badge-wordmark .bw-main {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(32px, 3.5vw, 48px);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #FAFAF9;
+    line-height: 1;
+  }
+
+  .badge-wordmark .bw-sub {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(12px, 1.3vw, 16px);
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(250,250,249,0.55);
+  }
+
+  .badge-wordmark .bw-tag {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #B45309;
+    margin-top: 6px;
+  }
+
+  .visual-layout-c {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .visual-right-c {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .type-spec-label-c {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(250,250,249,0.3);
+  }
+
+  .type-spec-name-c {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: rgba(250,250,249,0.8);
+  }
+
+  .type-spec-detail-c {
+    font-family: 'Lora', serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(250,250,249,0.4);
+    line-height: 1.5;
+  }
+
+  .feel-text-c {
+    font-family: 'Lora', serif;
+    font-size: clamp(14px, 1.4vw, 16px);
+    font-weight: 400;
+    color: rgba(250,250,249,0.55);
+    line-height: 1.65;
+    padding-top: 12px;
+    border-top: 1px solid rgba(250,250,249,0.1);
+  }
+
+  .slide-15 {
+    background: #292524;
+    color: #FAFAF9;
+    align-items: flex-start;
+  }
+
+  .copy-c-hero {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(28px, 3.5vw, 46px);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 1.1;
+    color: #FAFAF9;
+  }
+
+  .copy-c-pull {
+    font-family: 'Lora', serif;
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.6;
+    color: rgba(250,250,249,0.7);
+    border-left: 3px solid #B45309;
+    padding-left: 20px;
+  }
+
+  .copy-c-body {
+    font-family: 'Lora', serif;
+    font-size: clamp(15px, 1.6vw, 17px);
+    font-weight: 400;
+    line-height: 1.65;
+    color: rgba(250,250,249,0.55);
+  }
+
+  .copy-c-cta {
+    display: inline-block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #B45309;
+    border-bottom: 1px solid #B45309;
+    padding-bottom: 2px;
+  }
+
+  .copy-role-c {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(250,250,249,0.3);
+  }
+
+  .slide-16 {
+    background: #111111;
+    align-items: flex-start;
+  }
+
+  /* --- TRADEOFFS (shared) --- */
+  .tradeoffs-layout {
+    width: 100%;
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .tradeoffs-layout h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(26px, 3vw, 36px);
+    font-weight: 700;
+    color: #FAFAF9;
+    margin-bottom: 36px;
+    line-height: 1.2;
+  }
+
+  .tradeoff-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 28px 0;
+    border-top: 1px solid rgba(250,250,249,0.08);
+  }
+
+  .tradeoff-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .tradeoff-label.strength {
+    color: rgba(101, 163, 13, 0.7);
+  }
+
+  .tradeoff-label.consideration {
+    color: rgba(234, 179, 8, 0.6);
+  }
+
+  .tradeoff-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(15px, 1.6vw, 17px);
+    font-weight: 400;
+    color: rgba(250,250,249,0.65);
+    line-height: 1.65;
+  }
+
+  /* --- SLIDE 17: SIDE BY SIDE --- */
+  .slide-17 {
+    background: #111111;
+    text-align: center;
+  }
+
+  .slide-17 h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(26px, 3vw, 36px);
+    font-weight: 700;
+    color: #FAFAF9;
+    margin-bottom: 48px;
+  }
+
+  .side-by-side {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+    max-width: 820px;
+    margin: 0 auto 36px;
+  }
+
+  .sbs-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 32px 24px;
+    border: 1px solid rgba(250,250,249,0.08);
+    background: rgba(250,250,249,0.02);
+  }
+
+  .sbs-letter {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(250,250,249,0.3);
+  }
+
+  .sbs-swatch {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(250,250,249,0.1);
+  }
+
+  .sbs-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(16px, 1.8vw, 20px);
+    font-weight: 700;
+    color: #FAFAF9;
+  }
+
+  .sbs-descriptor {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(250,250,249,0.35);
+  }
+
+  .sbs-tagline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(250,250,249,0.5);
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .mix-note {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(14px, 1.5vw, 17px);
+    font-weight: 400;
+    color: rgba(250,250,249,0.4);
+    max-width: 540px;
+    line-height: 1.65;
+    font-style: italic;
+  }
+
+  /* --- SLIDE 18: NEXT STEPS --- */
+  .slide-18 {
+    background: #1C1917;
+    text-align: center;
+  }
+
+  .slide-18 h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 700;
+    color: #FAFAF9;
+    margin-bottom: 40px;
+    line-height: 1.15;
+  }
+
+  .next-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 560px;
+    margin: 0 auto 40px;
+  }
+
+  .next-step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .next-step-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #D97706;
+    width: 24px;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .next-step p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(15px, 1.6vw, 18px);
+    font-weight: 400;
+    color: rgba(250,250,249,0.7);
+    line-height: 1.6;
+  }
+
+  .slide-18 .sign-off {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(250,250,249,0.3);
+    letter-spacing: 0.04em;
+  }
+
+  /* --- LANDING PAGE MOCKUPS --- */
+  .slide-lp-a, .slide-merch-a { background: #1C1917; }
+  .slide-lp-b, .slide-merch-b { background: #FAFAF9; color: #1C1917; }
+  .slide-lp-c, .slide-merch-c { background: #292524; }
+
+  .browser-frame { width: 100%; max-width: 780px; margin: 12px auto 0; border-radius: 8px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
+  .browser-chrome { background: #E5E5E5; padding: 10px 14px; display: flex; align-items: center; gap: 10px; }
+  .browser-dots { display: flex; gap: 6px; }
+  .browser-dots span { width: 10px; height: 10px; border-radius: 50%; }
+  .browser-dots span:nth-child(1) { background: #FF5F57; }
+  .browser-dots span:nth-child(2) { background: #FFBD2E; }
+  .browser-dots span:nth-child(3) { background: #28C840; }
+  .browser-url { flex: 1; background: #fff; border-radius: 4px; padding: 5px 12px; font-family: 'DM Sans', sans-serif; font-size: 11px; color: #999; }
+
+  .lp-nav { display: flex; align-items: center; padding: 14px 28px; }
+  .lp-hero-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 320px; }
+  .lp-hero-text { display: flex; flex-direction: column; justify-content: center; padding: 32px 28px; gap: 14px; }
+  .lp-hero-photo { display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .lp-hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+  .lp-content-a { background: #1C1917; color: #FAFAF9; }
+  .lp-content-a .lp-nav { justify-content: space-between; border-bottom: 1px solid rgba(250,250,249,0.08); }
+  .lp-content-a h3 { font-family: 'DM Sans', sans-serif; font-size: 24px; font-weight: 800; text-transform: uppercase; line-height: 1.1; color: #FAFAF9; margin: 0; }
+  .lp-content-a .lp-sub { font-family: 'DM Sans', sans-serif; font-size: 12px; line-height: 1.6; color: rgba(250,250,249,0.5); margin: 0; }
+  .lp-content-a .lp-btn { display: inline-block; background: #D97706; color: #1C1917; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 22px; width: fit-content; }
+
+  .lp-content-b { background: #FAFAF9; color: #1C1917; }
+  .lp-content-b .lp-nav { justify-content: space-between; border-bottom: 1px solid rgba(28,25,23,0.08); }
+  .lp-content-b h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; line-height: 1.2; color: #1C1917; margin: 0; }
+  .lp-content-b .lp-sub { font-family: 'Source Sans 3', sans-serif; font-size: 12px; line-height: 1.6; color: rgba(28,25,23,0.5); margin: 0; }
+  .lp-content-b .lp-btn { display: inline-block; background: #92400E; color: #FAFAF9; font-family: 'Source Sans 3', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 10px 22px; width: fit-content; }
+
+  .lp-content-c { background: #292524; color: #FAFAF9; }
+  .lp-content-c .lp-nav { justify-content: center; border-bottom: 1px solid rgba(250,250,249,0.1); padding: 18px 28px; }
+  .lp-content-c .lp-hero-center { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 40px 28px; gap: 16px; min-height: 320px; justify-content: center; }
+  .lp-content-c h3 { font-family: 'Oswald', sans-serif; font-size: 24px; font-weight: 600; text-transform: uppercase; line-height: 1.15; color: #FAFAF9; margin: 0; }
+  .lp-content-c .lp-pull { font-family: 'Lora', serif; font-size: 13px; font-style: italic; line-height: 1.6; color: rgba(250,250,249,0.55); max-width: 380px; margin: 0; }
+  .lp-content-c .lp-sub { font-family: 'Lora', serif; font-size: 11px; color: rgba(250,250,249,0.4); margin: 0; }
+  .lp-content-c .lp-btn { display: inline-block; color: #B45309; font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 9px 22px; border: 1.5px solid #B45309; background: transparent; }
+
+  /* --- MERCH + SOCIAL GRID --- */
+  .merch-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; width: 100%; max-width: 820px; margin: 12px auto 0; }
+  .mockup-card { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 20px 12px; border: 1px solid rgba(250,250,249,0.06); background: rgba(250,250,249,0.02); border-radius: 4px; }
+  .mockup-card-light { border-color: rgba(28,25,23,0.08); background: rgba(28,25,23,0.02); }
+  .mockup-label { font-family: 'DM Sans', sans-serif; font-size: 9px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,250,249,0.3); }
+  .mockup-label-light { color: rgba(28,25,23,0.35); }
+
+  .biz-card { width: 170px; height: 100px; border-radius: 4px; padding: 10px 12px; display: flex; flex-direction: column; justify-content: flex-end; gap: 1px; }
+  .tee-mockup { position: relative; width: 100px; height: 110px; }
+  .tee-mockup svg { width: 100%; height: 100%; }
+  .tee-wm { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -20%); font-size: 7px; font-weight: 700; letter-spacing: 0.06em; text-align: center; white-space: nowrap; }
+  .truck-mockup { width: 150px; height: 88px; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; }
+  .stamp-mockup { width: 84px; height: 84px; border-radius: 50%; border-width: 3px; border-style: solid; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; transform: rotate(-8deg); }
+
+  /* Social mockups */
+  .ig-card { width: 170px; border-radius: 8px; overflow: hidden; padding: 10px; display: flex; flex-direction: column; gap: 6px; }
+  .ig-header { display: flex; gap: 8px; align-items: center; }
+  .ig-avatar { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .ig-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .ig-grid div { aspect-ratio: 1; border-radius: 1px; }
+
+  .fb-card { width: 170px; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; }
+  .fb-cover { height: 50px; display: flex; align-items: center; justify-content: center; }
+  .fb-profile { display: flex; gap: 8px; align-items: center; padding: 8px 10px; }
+  .fb-avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: -18px; }
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+  <!-- SLIDE 1: TITLE -->
+  <div class="slide slide-01 active" data-index="0">
+    <div style="margin-bottom:48px;">
+      <svg width="200" height="22" viewBox="0 0 801 87" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M742.796 84.4016V1.62091H761.668V32.4176H762.015C766.299 26.7445 771.393 23.387 779.613 23.387C792.58 23.387 800.221 32.6492 800.221 45.8478V84.4016H781.35V49.6684C781.35 43.4165 778.224 39.1327 772.087 39.1327C765.836 39.1327 761.668 44.3427 761.668 51.6366V84.4016H742.796Z" fill="white"/>
+        <path d="M725.709 85.0962C714.711 85.0962 706.838 81.5071 706.838 68.7716V36.9329H698.965V25.1236H706.838V6.36774H725.246V25.1236H736.014V36.9329H725.246V64.7194C725.246 69.3505 727.793 70.5083 731.846 70.5083C733.466 70.5083 735.319 70.3925 736.014 70.3925V84.17C734.393 84.6331 730.804 85.0962 725.709 85.0962Z" fill="white"/>
+        <path d="M622.698 84.4015L604.521 25.1237H623.74L630.224 49.6684C631.497 54.4153 632.886 61.1303 632.886 61.1303H633.118C633.118 61.1303 634.507 54.2995 635.781 49.3211L642.033 25.1237H658.01L664.494 49.3211C665.767 54.4153 667.272 61.2461 667.272 61.2461H667.504C667.504 61.2461 669.009 54.4153 670.282 49.6684L676.882 25.1237H695.522L677.345 84.4015H659.631L652.684 57.5413C651.411 52.9102 650.137 46.8898 650.137 46.8898H649.906C649.906 46.8898 648.516 52.9102 647.243 57.5413L640.18 84.4015H622.698Z" fill="white"/>
+        <path d="M573.427 72.8238C581.647 72.8238 586.047 65.6456 586.047 54.8784C586.047 44.1111 581.647 36.8171 573.427 36.8171C565.207 36.8171 560.923 44.1111 560.923 54.8784C560.923 65.6456 565.207 72.8238 573.427 72.8238ZM573.543 86.254C554.555 86.254 541.82 72.7081 541.82 54.8784C541.82 37.0487 554.555 23.5028 573.543 23.5028C592.646 23.5028 605.15 37.0487 605.15 54.8784C605.15 72.7081 592.646 86.254 573.543 86.254Z" fill="white"/>
+        <path d="M501.292 84.4016V25.1237H519.353V34.3858H519.701C523.869 27.3234 528.731 24.1974 535.909 24.1974C537.646 24.1974 538.804 24.3132 539.614 24.6606V40.8694H539.151C527.573 39.2485 520.164 44.9216 520.164 57.7728V84.4016H501.292Z" fill="white"/>
+        <path d="M452.645 86.254C440.835 86.254 431.226 82.086 424.395 74.6762C417.217 66.8034 413.28 55.9203 413.28 43.3006C413.28 30.3336 417.68 18.8717 425.553 10.9988C432.383 4.0522 441.993 0 453.918 0C475.221 0 487.957 11.3462 490.619 28.7127H470.706C469.201 21.9977 463.643 16.9035 454.613 16.9035C440.951 16.9035 434.12 28.2496 434.12 43.3006C434.12 58.4674 441.993 69.6978 454.96 69.6978C465.727 69.6978 472.095 62.5197 472.906 55.2257V54.9941H457.391V39.9431H491.893V84.4015H477.537L476.379 74.4447H476.147C470.706 82.8964 462.601 86.254 452.645 86.254Z" fill="white"/>
+        <path d="M367.465 84.4016L398.377 1.62091H414.586L383.674 84.4016H367.465Z" fill="#68FE38"/>
+        <path d="M331.471 84.4016V25.1237H349.532V34.3858H349.879C354.047 27.3234 358.91 24.1974 366.088 24.1974C367.825 24.1974 368.982 24.3132 369.793 24.6606V40.8694H369.33C357.752 39.2485 350.342 44.9216 350.342 57.7728V84.4016H331.471Z" fill="white"/>
+        <path d="M295.63 86.1382C276.063 86.1382 264.022 72.5923 264.022 54.6468C264.022 36.9329 276.411 23.387 294.472 23.387C302.924 23.387 309.639 26.1656 314.733 30.7967C321.795 37.2802 325.269 47.5844 325.153 59.6252H282.547C283.705 67.6139 288.104 72.5923 295.861 72.5923C300.84 72.5923 304.081 70.3925 305.702 66.6876H324.111C322.837 72.0134 319.364 77.1076 314.154 80.6967C309.176 84.17 303.155 86.1382 295.63 86.1382ZM282.663 48.3949H306.05C305.355 41.3325 300.955 36.8171 294.819 36.8171C287.641 36.8171 283.936 41.3325 282.663 48.3949Z" fill="white"/>
+        <path d="M221.893 86.254C206.726 86.254 195.958 74.5605 195.958 54.7626C195.958 36.2383 206.61 23.387 221.893 23.387C230.229 23.387 234.975 26.8603 238.449 31.8387H238.796V1.62091H257.668V84.4016H239.606V76.4129H239.375C235.786 82.5491 229.65 86.254 221.893 86.254ZM226.755 71.3187C234.628 71.3187 239.259 64.4879 239.259 54.7626C239.259 44.8058 235.207 37.6276 226.987 37.6276C219.461 37.6276 215.062 44.5742 215.062 54.5311C215.062 64.8352 219.461 71.3187 226.755 71.3187Z" fill="white"/>
+        <path d="M170.358 84.4016V1.62091H189.461V84.4016H170.358Z" fill="white"/>
+        <path d="M142.315 84.4016V25.1237H161.187V84.4016H142.315ZM142.315 16.9035V1.62091H161.187V16.9035H142.315Z" fill="white"/>
+        <path d="M97.1153 86.1382C83.4536 86.1382 76.2754 77.2234 76.2754 64.0248V25.1237H95.0313V60.0883C95.0313 66.5719 97.9257 70.161 103.946 70.161C110.43 70.161 114.366 65.2983 114.366 58.2359V25.1237H133.238V84.4015H115.177V77.1076H114.829C110.545 82.8964 105.335 86.1382 97.1153 86.1382Z" fill="white"/>
+        <path d="M0.22168 84.4016V1.62091H40.1648C48.7323 1.62091 55.1 3.7049 59.4996 7.29399C64.2464 11.2304 66.6778 16.5562 66.6778 23.1555C66.6778 31.3756 62.394 36.5856 55.1 39.3643V39.7116C64.1307 42.4902 69.9195 50.1315 69.9195 59.9726C69.9195 68.3085 66.9093 74.3289 61.4678 78.4969C56.6051 82.3176 49.7743 84.4016 41.091 84.4016H0.22168ZM20.4827 67.9612H38.7755C45.4905 67.9612 49.6585 64.1406 49.6585 58.2359C49.6585 51.6366 44.7959 48.2791 38.5439 48.2791H20.4827V67.9612ZM20.4827 34.3858H37.1546C43.0592 34.3858 47.1114 31.4914 47.1114 26.0499C47.1114 20.8399 43.2908 17.8297 37.2704 17.8297H20.4827V34.3858Z" fill="white"/>
+      </svg>
+    </div>
+    <h1>Tougas Timberworks</h1>
+    <h2>Brand Directions</h2>
+    <div class="prepared-by">Prepared by BuilderGrowth</div>
+  </div>
+
+  <!-- SLIDE 2: WHAT WE HEARD -->
+  <div class="slide slide-02" data-index="1">
+    <div class="slide-02-layout">
+      <div class="slide-02-text">
+        <div class="slide-label">What We Heard</div>
+        <h2>You told us who you are.</h2>
+        <div class="heard-items">
+          <div class="heard-item">
+            <div class="dot"></div>
+            <p>Third-generation woodworker. Your grandfather carved toys and gave them away. Your father spent seven years building a canoe. You mill lumber. After your daughter was born, you went full-time overnight.</p>
+          </div>
+          <div class="heard-item">
+            <div class="dot"></div>
+            <p>One-man shop in Monroe, CT. Full cycle: mill, kiln dry, build. You touch the wood at every stage.</p>
+          </div>
+          <div class="heard-item">
+            <div class="dot"></div>
+            <p>Countertops, tables, mantles, shelves, stair treads, beam casings. Plus kiln-dried lumber sales and kiln drying services for other woodworkers.</p>
+          </div>
+          <div class="heard-item">
+            <div class="dot"></div>
+            <p>Earthy but not backwoods. Not too polished. Not generic. You knew exactly what you did not want.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-02-photo">
+        <img src="photos/eric-milling.png" alt="Eric milling lumber on a chainsaw mill, sawdust flying" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2B: THE WORK (PHOTO COLLAGE) -->
+  <div class="slide slide-02b" data-index="2">
+    <div class="slide-label">The Work</div>
+    <div class="photo-grid">
+      <div class="photo-cell">
+        <img src="photos/raw-slab.jpg" alt="Raw live edge slab standing upright" loading="lazy">
+        <div class="photo-label">Mill</div>
+      </div>
+      <div class="photo-cell">
+        <img src="photos/lumber-stacks.jpg" alt="Stacked lumber inventory on racks" loading="lazy">
+        <div class="photo-label">10,000+ Board Feet</div>
+      </div>
+      <div class="photo-cell">
+        <img src="photos/kiln-interior.jpg" alt="iDry kiln loaded with slabs" loading="lazy">
+        <div class="photo-label">Dry</div>
+      </div>
+      <div class="photo-cell">
+        <img src="photos/bar-counter.jpg" alt="Live edge bar counter installed in kitchen" loading="lazy">
+        <div class="photo-label">Build</div>
+      </div>
+      <div class="photo-cell">
+        <img src="photos/walnut-table.jpg" alt="Black walnut coffee table in living room" loading="lazy">
+        <div class="photo-label">Build</div>
+      </div>
+      <div class="photo-cell">
+        <img src="photos/floating-shelves.jpg" alt="Live edge floating shelves in kitchen" loading="lazy">
+        <div class="photo-label">Build</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: BRAND PERSONALITY -->
+  <div class="slide slide-03" data-index="3">
+    <div class="tagline-pre">The Brand Personality</div>
+    <h2>Raw Material, Clean Cut.</h2>
+    <p class="tension">The wood is wild. Live edge, natural grain, local timber. The work is precise. Festool track saw, kiln dried to spec, delivered in three weeks. Every piece carries both. That tension is the brand.</p>
+    <div class="rule"></div>
+    <div class="tagline-lockup">Mill. Dry. Build.</div>
+  </div>
+
+  <!-- SLIDE 4: THREE DIRECTIONS -->
+  <div class="slide slide-04" data-index="4">
+    <div class="slide-label">Three Directions</div>
+    <h2>Same personality. Three ways to say it.</h2>
+    <p class="intro-text">We built three complete brand directions. Each one is a different way to express who you are. Same tagline, same story, different visual language.</p>
+    <div class="directions-list">
+      <div class="direction-item">A. The Workshop <span>— Bold, dark, amber-lit</span></div>
+      <div class="direction-item">B. The Grain <span>— Warm, light, material-forward</span></div>
+      <div class="direction-item">C. The Heritage <span>— Badge-driven, established, generational</span></div>
+    </div>
+    <div class="walk-through">Let's walk through each one.</div>
+  </div>
+
+  <!-- SLIDE 5: DIR A TITLE CARD -->
+  <div class="slide slide-05" data-index="5">
+    <div class="dir-title-card">
+      <div class="dir-label">Direction A</div>
+      <div class="dir-name" style="font-family:'DM Sans',sans-serif;color:#FAFAF9;">The Workshop</div>
+      <p class="dir-line">Industrial sincerity. Bold, dark, amber-lit. Like your shop at night with the kiln running.</p>
+      <div class="swatches">
+        <div class="swatch"><div class="swatch-color" style="background:#1C1917;"></div><div class="swatch-hex">#1C1917</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#292524;"></div><div class="swatch-hex">#292524</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#FAFAF9;"></div><div class="swatch-hex">#FAFAF9</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#D97706;"></div><div class="swatch-hex">#D97706</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#78716C;"></div><div class="swatch-hex">#78716C</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#44403C;"></div><div class="swatch-hex">#44403C</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: DIR A VISUAL SYSTEM -->
+  <div class="slide slide-06" data-index="6">
+    <div style="width:100%;max-width:960px;margin:0 auto;">
+      <div class="slide-label" style="color:rgba(250,250,249,0.3);">Direction A — Visual System</div>
+      <div class="visual-layout">
+        <div class="wordmark-a">
+          <div class="wm-main">TOUGAS</div>
+          <div class="wm-sub">TIMBERWORKS</div>
+          <div class="wm-tag">MILL. DRY. BUILD.</div>
+        </div>
+        <div class="visual-right">
+          <div class="type-spec">
+            <div class="type-spec-label">Display</div>
+            <div class="type-spec-name">DM Sans 800</div>
+            <div class="type-spec-detail">Uppercase, wide-tracked. Headers, wordmark, all signage applications.</div>
+          </div>
+          <div class="type-spec">
+            <div class="type-spec-label">Body</div>
+            <div class="type-spec-name">DM Sans 400</div>
+            <div class="type-spec-detail">Clean, legible. No serif. The work speaks; the copy stays out of the way.</div>
+          </div>
+          <div class="feel-text">
+            This direction draws from Field Notes, Duluth, and vintage lumber stamps. Everything is uppercase, heavy, built to work on a truck door or a business card. The amber accent (#D97706) comes from kiln heat. The dark background puts the work forward.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- DIR A: LANDING PAGE MOCKUP -->
+  <div class="slide slide-lp-a" data-index="7">
+    <div class="slide-label" style="color:rgba(250,250,249,0.3);">Direction A &mdash; Landing Page</div>
+    <div class="browser-frame">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">tougastimberworks.com</div>
+      </div>
+      <div class="lp-content-a">
+        <div class="lp-nav">
+          <div style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#FAFAF9;">TOUGAS TIMBERWORKS</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:rgba(250,250,249,0.4);">Call: (203) 712-5717</div>
+        </div>
+        <div class="lp-hero-split">
+          <div class="lp-hero-text">
+            <h3>Raw material.<br>Clean cut.<br>Built in Monroe, CT.</h3>
+            <p class="lp-sub">Chainsaw-milled hardwood. Kiln-dried in-house. Custom tables, countertops, mantles.</p>
+            <div class="lp-btn">Come See the Slabs</div>
+          </div>
+          <div class="lp-hero-photo" style="background:#292524;">
+            <img src="photos/eric-milling.png" alt="Eric milling lumber" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: DIR A COPY -->
+  <div class="slide slide-07" data-index="8">
+    <div class="copy-showcase-a">
+      <div class="slide-label" style="color:rgba(250,250,249,0.3);">Direction A — Sample Copy</div>
+      <div class="copy-block">
+        <div class="copy-role">Hero Headline</div>
+        <div class="copy-a-hero">Raw material.<br>Clean cut.<br>Built in Monroe, CT.</div>
+      </div>
+      <div class="copy-block">
+        <div class="copy-role">Service Description</div>
+        <p class="copy-a-body">We mill local hardwood, kiln dry it in-house, and build to order. No shortcuts. No middlemen. You get the whole tree, worked by one set of hands, start to finish.</p>
+      </div>
+      <div class="copy-block">
+        <div class="copy-role">Call to Action</div>
+        <div class="copy-a-cta">Come see the slabs.</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- DIR A: MERCH + SOCIAL -->
+  <div class="slide slide-merch-a" data-index="9">
+    <div class="slide-label" style="color:rgba(250,250,249,0.3);">Direction A &mdash; Applications + Social</div>
+    <div class="merch-grid">
+      <div class="mockup-card">
+        <div class="biz-card" style="background:#292524;color:#FAFAF9;">
+          <div style="font-family:'DM Sans',sans-serif;font-size:10px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#FAFAF9;margin-bottom:auto;">TOUGAS<br><span style="font-weight:400;font-size:8px;letter-spacing:0.12em;opacity:0.6;">TIMBERWORKS</span></div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:9px;font-weight:500;color:#FAFAF9;">Eric Tougas</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:7px;color:rgba(250,250,249,0.5);">(203) 712-5717 &middot; Monroe, CT</div>
+        </div>
+        <div class="mockup-label">Business Card</div>
+      </div>
+      <div class="mockup-card">
+        <div class="tee-mockup">
+          <svg viewBox="0 0 120 130" fill="none"><path d="M35 5 L5 25 L18 35 L18 125 L102 125 L102 35 L115 25 L85 5 L72 15 C65 22 55 22 48 15 Z" fill="#1C1917"/></svg>
+          <div class="tee-wm" style="font-family:'DM Sans',sans-serif;color:#FAFAF9;text-transform:uppercase;">TOUGAS</div>
+        </div>
+        <div class="mockup-label">T-Shirt</div>
+      </div>
+      <div class="mockup-card">
+        <div class="truck-mockup" style="background:#44403C;color:#FAFAF9;">
+          <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;">TOUGAS</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:0.14em;text-transform:uppercase;opacity:0.6;">TIMBERWORKS</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:7px;letter-spacing:0.1em;text-transform:uppercase;opacity:0.4;margin-top:2px;">Monroe, CT</div>
+        </div>
+        <div class="mockup-label">Truck Door</div>
+      </div>
+      <div class="mockup-card">
+        <div class="stamp-mockup" style="border-color:#D97706;color:#FAFAF9;">
+          <div style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;">TOUGAS</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:6px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;opacity:0.7;">TIMBERWORKS</div>
+        </div>
+        <div class="mockup-label">Lumber Stamp</div>
+      </div>
+      <div class="mockup-card">
+        <div class="ig-card" style="background:#000;color:#fff;">
+          <div class="ig-header">
+            <div class="ig-avatar" style="background:#D97706;"><div style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:800;color:#1C1917;">T</div></div>
+            <div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:9px;font-weight:700;color:#fff;">tougastimberworks</div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:7px;color:rgba(255,255,255,0.5);">245 posts &middot; 718 followers</div>
+            </div>
+          </div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:7px;color:rgba(255,255,255,0.7);line-height:1.4;">Mill. Dry. Build.<br>Monroe, CT | tougastimberworks.com</div>
+          <div class="ig-grid">
+            <div style="background:#292524;"></div><div style="background:#44403C;"></div><div style="background:#292524;"></div>
+          </div>
+        </div>
+        <div class="mockup-label">Instagram</div>
+      </div>
+      <div class="mockup-card">
+        <div class="fb-card" style="background:#1C1917;">
+          <div class="fb-cover" style="background:#292524;">
+            <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#FAFAF9;">TOUGAS TIMBERWORKS</div>
+          </div>
+          <div class="fb-profile">
+            <div class="fb-avatar" style="background:#D97706;border:2px solid #1C1917;"><div style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:800;color:#1C1917;">T</div></div>
+            <div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:9px;font-weight:700;color:#FAFAF9;">Tougas Timberworks</div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:7px;color:rgba(250,250,249,0.5);">Carpenter &middot; Monroe, CT</div>
+            </div>
+          </div>
+        </div>
+        <div class="mockup-label">Facebook</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: DIR A TRADEOFFS -->
+  <div class="slide slide-08" data-index="10">
+    <div class="tradeoffs-layout">
+      <h2>Direction A — Trade-offs</h2>
+      <div class="tradeoff-section">
+        <div class="tradeoff-label strength">Strengths</div>
+        <p class="tradeoff-text">Distinctive. Bold. Stands apart from every woodworker site in Connecticut. Scales beautifully to signage, truck graphics, patches, and lumber stamps. Feels established from day one.</p>
+      </div>
+      <div class="tradeoff-section">
+        <div class="tradeoff-label consideration">Consideration</div>
+        <p class="tradeoff-text">Dark and industrial may feel less approachable for some homeowners. The Fairfield County audience skews toward warmth. This direction works best if your photography is strong enough to pop against a dark background.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: DIR B TITLE CARD -->
+  <div class="slide slide-09" data-index="11">
+    <div class="dir-title-card">
+      <div class="dir-label">Direction B</div>
+      <div class="dir-name" style="font-family:'Playfair Display',serif;color:#1C1917;">The Grain</div>
+      <p class="dir-line" style="color:rgba(28,25,23,0.6);">Material-forward. Warm, light, the wood is the star.</p>
+      <div class="swatches">
+        <div class="swatch"><div class="swatch-color" style="background:#FAFAF9;border-color:rgba(28,25,23,0.15);"></div><div class="swatch-hex" style="color:rgba(28,25,23,0.4);">#FAFAF9</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#F5F5F4;border-color:rgba(28,25,23,0.15);"></div><div class="swatch-hex" style="color:rgba(28,25,23,0.4);">#F5F5F4</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#1C1917;"></div><div class="swatch-hex" style="color:rgba(28,25,23,0.4);">#1C1917</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#92400E;"></div><div class="swatch-hex" style="color:rgba(28,25,23,0.4);">#92400E</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#A8A29E;"></div><div class="swatch-hex" style="color:rgba(28,25,23,0.4);">#A8A29E</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#E7E5E4;border-color:rgba(28,25,23,0.15);"></div><div class="swatch-hex" style="color:rgba(28,25,23,0.4);">#E7E5E4</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 10: DIR B VISUAL SYSTEM -->
+  <div class="slide slide-10" data-index="12">
+    <div style="width:100%;max-width:960px;margin:0 auto;">
+      <div class="slide-label" style="color:rgba(28,25,23,0.35);">Direction B — Visual System</div>
+      <div class="visual-layout-b">
+        <div class="wordmark-b">
+          <div class="wm-main">Tougas</div>
+          <div class="wm-sub">Timberworks</div>
+          <div class="wm-tag">MILL. DRY. BUILD.</div>
+        </div>
+        <div class="visual-right-b">
+          <div class="type-spec">
+            <div class="type-spec-label-b">Display</div>
+            <div class="type-spec-name-b" style="font-family:'Playfair Display',serif;">Playfair Display 700</div>
+            <div class="type-spec-detail-b">Mixed case. Serif warmth without feeling precious. Headers and wordmark.</div>
+          </div>
+          <div class="type-spec">
+            <div class="type-spec-label-b">Body</div>
+            <div class="type-spec-name-b" style="font-family:'Source Sans 3',sans-serif;font-weight:400;">Source Sans 3 400</div>
+            <div class="type-spec-detail-b">Light weight for body copy. Balances the heaviness of the serif headline.</div>
+          </div>
+          <div class="feel-text-b">
+            This direction lets the material lead. Light background so wood photos pop. The deep walnut accent (#92400E) ties directly to your best-selling species. Includes lumber pricing for the woodworker audience right on the page. Feels like a showroom.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- DIR B: LANDING PAGE MOCKUP -->
+  <div class="slide slide-lp-b" data-index="13">
+    <div class="slide-label" style="color:rgba(28,25,23,0.35);">Direction B &mdash; Landing Page</div>
+    <div class="browser-frame" style="box-shadow:0 8px 40px rgba(0,0,0,0.15);">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">tougastimberworks.com</div>
+      </div>
+      <div class="lp-content-b">
+        <div class="lp-nav">
+          <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#1C1917;">Tougas Timberworks</div>
+          <div style="display:flex;gap:16px;font-family:'Source Sans 3',sans-serif;font-size:11px;color:rgba(28,25,23,0.45);"><span>Slabs</span><span>Custom Work</span><span>About</span><span>Contact</span></div>
+        </div>
+        <div class="lp-hero-split">
+          <div class="lp-hero-text">
+            <h3>Every slab has a story.<br>I make sure it keeps telling it.</h3>
+            <p class="lp-sub">Black Walnut from $18/bf. White Oak from $12/bf. Cherry from $10/bf. All kiln-dried, ready to build.</p>
+            <div class="lp-btn">View Available Slabs</div>
+          </div>
+          <div class="lp-hero-photo" style="background:#F5F5F4;">
+            <img src="photos/walnut-table.jpg" alt="Black walnut table" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 11: DIR B COPY -->
+  <div class="slide slide-11" data-index="14">
+    <div style="width:100%;max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:40px;">
+      <div class="slide-label" style="color:rgba(28,25,23,0.35);">Direction B — Sample Copy</div>
+      <div class="copy-block">
+        <div class="copy-role-b">Hero Headline</div>
+        <div class="copy-b-hero">Every piece starts<br>with the right slab.</div>
+      </div>
+      <div class="copy-block">
+        <div class="copy-role-b">Service Description</div>
+        <p class="copy-b-body">Countertops, tables, mantles, and shelves made from locally milled hardwood, dried in our own kiln. Every slab is hand-selected. Lead time is three weeks, not three months.</p>
+      </div>
+      <div class="copy-block">
+        <div class="copy-role-b">Call to Action</div>
+        <div class="copy-b-cta">See the wood in person.</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- DIR B: MERCH + SOCIAL -->
+  <div class="slide slide-merch-b" data-index="15">
+    <div class="slide-label" style="color:rgba(28,25,23,0.35);">Direction B &mdash; Applications + Social</div>
+    <div class="merch-grid">
+      <div class="mockup-card mockup-card-light">
+        <div class="biz-card" style="background:#F5F5F4;color:#1C1917;border:1px solid rgba(28,25,23,0.08);">
+          <div style="font-family:'Playfair Display',serif;font-size:11px;font-weight:700;color:#1C1917;margin-bottom:auto;">Tougas<br><span style="font-family:'Source Sans 3',sans-serif;font-weight:300;font-size:9px;letter-spacing:0.08em;color:rgba(28,25,23,0.5);">Timberworks</span></div>
+          <div style="font-family:'Source Sans 3',sans-serif;font-size:9px;font-weight:600;color:#1C1917;">Eric Tougas</div>
+          <div style="font-family:'Source Sans 3',sans-serif;font-size:7px;color:rgba(28,25,23,0.5);">(203) 712-5717 &middot; Monroe, CT</div>
+        </div>
+        <div class="mockup-label mockup-label-light">Business Card</div>
+      </div>
+      <div class="mockup-card mockup-card-light">
+        <div class="tee-mockup">
+          <svg viewBox="0 0 120 130" fill="none"><path d="M35 5 L5 25 L18 35 L18 125 L102 125 L102 35 L115 25 L85 5 L72 15 C65 22 55 22 48 15 Z" fill="#1C1917"/></svg>
+          <div class="tee-wm" style="font-family:'Playfair Display',serif;color:#FAFAF9;">Tougas</div>
+        </div>
+        <div class="mockup-label mockup-label-light">T-Shirt</div>
+      </div>
+      <div class="mockup-card mockup-card-light">
+        <div class="truck-mockup" style="background:#E7E5E4;color:#1C1917;border:1px solid rgba(28,25,23,0.1);">
+          <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;">Tougas</div>
+          <div style="font-family:'Source Sans 3',sans-serif;font-size:8px;letter-spacing:0.1em;text-transform:uppercase;opacity:0.5;">Timberworks</div>
+          <div style="font-family:'Source Sans 3',sans-serif;font-size:7px;letter-spacing:0.08em;opacity:0.35;margin-top:2px;">Monroe, CT</div>
+        </div>
+        <div class="mockup-label mockup-label-light">Truck Door</div>
+      </div>
+      <div class="mockup-card mockup-card-light">
+        <div class="stamp-mockup" style="border-color:#92400E;color:#1C1917;">
+          <div style="font-family:'Playfair Display',serif;font-size:13px;font-weight:700;">Tougas</div>
+          <div style="font-family:'Source Sans 3',sans-serif;font-size:6px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;opacity:0.6;">Timberworks</div>
+        </div>
+        <div class="mockup-label mockup-label-light">Lumber Stamp</div>
+      </div>
+      <div class="mockup-card mockup-card-light">
+        <div class="ig-card" style="background:#fff;color:#1C1917;border:1px solid rgba(28,25,23,0.1);">
+          <div class="ig-header">
+            <div class="ig-avatar" style="background:#92400E;"><div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#FAFAF9;">T</div></div>
+            <div>
+              <div style="font-family:'Source Sans 3',sans-serif;font-size:9px;font-weight:600;color:#1C1917;">tougastimberworks</div>
+              <div style="font-family:'Source Sans 3',sans-serif;font-size:7px;color:rgba(28,25,23,0.45);">245 posts &middot; 718 followers</div>
+            </div>
+          </div>
+          <div style="font-family:'Source Sans 3',sans-serif;font-size:7px;color:rgba(28,25,23,0.6);line-height:1.4;">Live edge slabs, kiln drying, custom furniture<br>Monroe CT | tougastimberworks.com</div>
+          <div class="ig-grid">
+            <div style="background:#F5F5F4;"></div><div style="background:#E7E5E4;"></div><div style="background:#F5F5F4;"></div>
+          </div>
+        </div>
+        <div class="mockup-label mockup-label-light">Instagram</div>
+      </div>
+      <div class="mockup-card mockup-card-light">
+        <div class="fb-card" style="background:#fff;border:1px solid rgba(28,25,23,0.1);">
+          <div class="fb-cover" style="background:#F5F5F4;">
+            <div style="font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:#1C1917;">Tougas Timberworks</div>
+          </div>
+          <div class="fb-profile">
+            <div class="fb-avatar" style="background:#92400E;border:2px solid #fff;"><div style="font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:#FAFAF9;">T</div></div>
+            <div>
+              <div style="font-family:'Source Sans 3',sans-serif;font-size:9px;font-weight:600;color:#1C1917;">Tougas Timberworks</div>
+              <div style="font-family:'Source Sans 3',sans-serif;font-size:7px;color:rgba(28,25,23,0.45);">Carpenter &middot; Monroe, CT</div>
+            </div>
+          </div>
+        </div>
+        <div class="mockup-label mockup-label-light">Facebook</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 12: DIR B TRADEOFFS -->
+  <div class="slide slide-12" data-index="16">
+    <div class="tradeoffs-layout">
+      <h2>Direction B — Trade-offs</h2>
+      <div class="tradeoff-section">
+        <div class="tradeoff-label strength">Strengths</div>
+        <p class="tradeoff-text">Warmest of the three. Most approachable for homeowners. The light background makes product photography shine. Feels like a showroom, not a shop. Easier for a general audience to trust immediately.</p>
+      </div>
+      <div class="tradeoff-section">
+        <div class="tradeoff-label consideration">Consideration</div>
+        <p class="tradeoff-text">Less distinctive in the category. Many woodworker sites use light backgrounds and serif fonts. Could blend in if the photography is not exceptional. Also less bold for signage and physical applications.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 13: DIR C TITLE CARD -->
+  <div class="slide slide-13" data-index="17">
+    <div class="dir-title-card">
+      <div class="dir-label">Direction C</div>
+      <div class="dir-name" style="font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;color:#FAFAF9;">The Heritage</div>
+      <p class="dir-line">Athletic Brewing meets Ford meets Duluth. Badge-driven, established, American.</p>
+      <div class="swatches">
+        <div class="swatch"><div class="swatch-color" style="background:#292524;"></div><div class="swatch-hex">#292524</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#1C1917;"></div><div class="swatch-hex">#1C1917</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#FAFAF9;"></div><div class="swatch-hex">#FAFAF9</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#B45309;"></div><div class="swatch-hex">#B45309</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#365314;"></div><div class="swatch-hex">#365314</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#78716C;"></div><div class="swatch-hex">#78716C</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 14: DIR C VISUAL SYSTEM -->
+  <div class="slide slide-14" data-index="18">
+    <div style="width:100%;max-width:960px;margin:0 auto;">
+      <div class="slide-label" style="color:rgba(250,250,249,0.3);">Direction C — Visual System</div>
+      <div class="visual-layout-c">
+        <div style="display:flex;justify-content:center;">
+          <div class="badge-wordmark">
+            <div class="bw-gen">Three Generations</div>
+            <div class="bw-main">TOUGAS</div>
+            <div class="bw-sub">TIMBERWORKS</div>
+            <div class="bw-tag">MILL. DRY. BUILD.</div>
+          </div>
+        </div>
+        <div class="visual-right-c">
+          <div class="type-spec">
+            <div class="type-spec-label-c">Display</div>
+            <div class="type-spec-name-c">Oswald 600</div>
+            <div class="type-spec-detail-c">Uppercase, condensed. Built for badges, stamps, labels. Carries weight at any size.</div>
+          </div>
+          <div class="type-spec">
+            <div class="type-spec-label-c">Body</div>
+            <div class="type-spec-name-c" style="font-family:'Lora',serif;">Lora 400</div>
+            <div class="type-spec-detail-c">Serif warmth in the body. The contrast between the condensed display and the reading serif adds depth.</div>
+          </div>
+          <div class="feel-text-c">
+            Built around a badge identity, like a craft brewery label or a vintage lumber stamp. The double-border treatment gives it weight. Burnt amber (#B45309) and forest green (#365314) ground it in the outdoors without going rustic. The generational story is woven into the mark itself.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- DIR C: LANDING PAGE MOCKUP -->
+  <div class="slide slide-lp-c" data-index="19">
+    <div class="slide-label" style="color:rgba(250,250,249,0.3);">Direction C &mdash; Landing Page</div>
+    <div class="browser-frame">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">tougastimberworks.com</div>
+      </div>
+      <div class="lp-content-c">
+        <div class="lp-nav">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:1px;border:1.5px solid rgba(250,250,249,0.5);padding:6px 18px;">
+            <div style="font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#FAFAF9;">TOUGAS</div>
+            <div style="font-family:'Oswald',sans-serif;font-size:8px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:rgba(250,250,249,0.5);">TIMBERWORKS</div>
+          </div>
+        </div>
+        <div class="lp-hero-center">
+          <h3>My grandfather carved toys.<br>My father built a canoe.<br>I mill lumber.</h3>
+          <p class="lp-sub">Three generations. One shop. Monroe, Connecticut.</p>
+          <div class="lp-btn">I don't have a quote form. I have a phone.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 15: DIR C COPY -->
+  <div class="slide slide-15" data-index="20">
+    <div style="width:100%;max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:40px;">
+      <div class="slide-label" style="color:rgba(250,250,249,0.3);">Direction C — Sample Copy</div>
+      <div class="copy-block">
+        <div class="copy-role-c">Hero Headline</div>
+        <div class="copy-c-hero">Three generations<br>of working wood.</div>
+      </div>
+      <div class="copy-block">
+        <div class="copy-role-c">Pull Quote</div>
+        <p class="copy-c-pull">"My grandfather carved toys. My father built a canoe. I mill lumber."</p>
+      </div>
+      <div class="copy-block">
+        <div class="copy-role-c">Call to Action</div>
+        <div class="copy-c-cta">I don't have a quote form. I have a phone.</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- DIR C: MERCH + SOCIAL -->
+  <div class="slide slide-merch-c" data-index="21">
+    <div class="slide-label" style="color:rgba(250,250,249,0.3);">Direction C &mdash; Applications + Social</div>
+    <div class="merch-grid">
+      <div class="mockup-card">
+        <div class="biz-card" style="background:#1C1917;color:#FAFAF9;border:1px solid rgba(250,250,249,0.1);">
+          <div style="display:flex;flex-direction:column;align-items:flex-start;gap:1px;margin-bottom:auto;border:1px solid rgba(250,250,249,0.3);padding:4px 8px;width:fit-content;">
+            <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#FAFAF9;">TOUGAS</div>
+            <div style="font-family:'Oswald',sans-serif;font-size:6px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:rgba(250,250,249,0.5);">TIMBERWORKS</div>
+          </div>
+          <div style="font-family:'Lora',serif;font-size:9px;font-weight:500;color:#FAFAF9;">Eric Tougas</div>
+          <div style="font-family:'Lora',serif;font-size:7px;color:rgba(250,250,249,0.5);">(203) 712-5717 &middot; Monroe, CT</div>
+        </div>
+        <div class="mockup-label">Business Card</div>
+      </div>
+      <div class="mockup-card">
+        <div class="tee-mockup">
+          <svg viewBox="0 0 120 130" fill="none"><path d="M35 5 L5 25 L18 35 L18 125 L102 125 L102 35 L115 25 L85 5 L72 15 C65 22 55 22 48 15 Z" fill="#292524"/></svg>
+          <div class="tee-wm" style="font-family:'Oswald',sans-serif;color:#FAFAF9;text-transform:uppercase;letter-spacing:0.1em;">TOUGAS</div>
+        </div>
+        <div class="mockup-label">T-Shirt</div>
+      </div>
+      <div class="mockup-card">
+        <div class="truck-mockup" style="background:#44403C;color:#FAFAF9;">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:1px;border:1.5px solid rgba(250,250,249,0.5);padding:6px 16px;">
+            <div style="font-family:'Oswald',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;">TOUGAS</div>
+            <div style="font-family:'Oswald',sans-serif;font-size:7px;letter-spacing:0.12em;text-transform:uppercase;opacity:0.6;">TIMBERWORKS</div>
+          </div>
+          <div style="font-family:'Oswald',sans-serif;font-size:7px;letter-spacing:0.1em;text-transform:uppercase;opacity:0.4;margin-top:4px;">Monroe, CT</div>
+        </div>
+        <div class="mockup-label">Truck Door</div>
+      </div>
+      <div class="mockup-card">
+        <div class="stamp-mockup" style="border-color:#B45309;color:#FAFAF9;outline:1px solid rgba(180,83,9,0.4);outline-offset:4px;">
+          <div style="font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;">TOUGAS</div>
+          <div style="font-family:'Oswald',sans-serif;font-size:6px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;opacity:0.7;">TIMBERWORKS</div>
+        </div>
+        <div class="mockup-label">Lumber Stamp</div>
+      </div>
+      <div class="mockup-card">
+        <div class="ig-card" style="background:#000;color:#fff;">
+          <div class="ig-header">
+            <div class="ig-avatar" style="background:#365314;"><div style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;color:#FAFAF9;">T</div></div>
+            <div>
+              <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:500;color:#fff;letter-spacing:0.02em;">tougastimberworks</div>
+              <div style="font-family:'Lora',serif;font-size:7px;color:rgba(255,255,255,0.5);">245 posts &middot; 718 followers</div>
+            </div>
+          </div>
+          <div style="font-family:'Lora',serif;font-size:7px;color:rgba(255,255,255,0.7);line-height:1.4;">Three generations of working wood.<br>Monroe, CT | tougastimberworks.com</div>
+          <div class="ig-grid">
+            <div style="background:#1C1917;"></div><div style="background:#44403C;"></div><div style="background:#1C1917;"></div>
+          </div>
+        </div>
+        <div class="mockup-label">Instagram</div>
+      </div>
+      <div class="mockup-card">
+        <div class="fb-card" style="background:#1C1917;">
+          <div class="fb-cover" style="background:#292524;">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
+              <div style="font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#FAFAF9;">TOUGAS</div>
+              <div style="font-family:'Oswald',sans-serif;font-size:6px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(250,250,249,0.5);">TIMBERWORKS</div>
+            </div>
+          </div>
+          <div class="fb-profile">
+            <div class="fb-avatar" style="background:#365314;border:2px solid #1C1917;"><div style="font-family:'Oswald',sans-serif;font-size:12px;font-weight:600;color:#FAFAF9;">T</div></div>
+            <div>
+              <div style="font-family:'Oswald',sans-serif;font-size:9px;font-weight:500;color:#FAFAF9;letter-spacing:0.02em;">Tougas Timberworks</div>
+              <div style="font-family:'Lora',serif;font-size:7px;color:rgba(250,250,249,0.5);">Carpenter &middot; Monroe, CT</div>
+            </div>
+          </div>
+        </div>
+        <div class="mockup-label">Facebook</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 16: DIR C TRADEOFFS -->
+  <div class="slide slide-16" data-index="22">
+    <div class="tradeoffs-layout">
+      <h2>Direction C — Trade-offs</h2>
+      <div class="tradeoff-section">
+        <div class="tradeoff-label strength">Strengths</div>
+        <p class="tradeoff-text">Most emotionally resonant. The badge scales perfectly to labels, patches, stamps, and vehicle graphics. The generational story is built into the mark, not just the copy. References your exact brand admiration list: Athletic Brewing, Ford, Duluth.</p>
+      </div>
+      <div class="tradeoff-section">
+        <div class="tradeoff-label consideration">Consideration</div>
+        <p class="tradeoff-text">The badge identity requires more design precision to execute well across all touchpoints. Slightly more complex than A or B. The payoff is higher, but so is the craft threshold.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 17: SIDE BY SIDE -->
+  <div class="slide slide-17" data-index="23">
+    <div class="slide-label" style="color:rgba(250,250,249,0.3);">All Three Directions</div>
+    <h2>Pick the one that feels like you.</h2>
+    <div class="side-by-side">
+      <div class="sbs-card">
+        <div class="sbs-letter">Direction A</div>
+        <div class="sbs-swatch" style="background:#D97706;"></div>
+        <div class="sbs-name">The Workshop</div>
+        <div class="sbs-descriptor">Industrial</div>
+        <div class="sbs-tagline">Bold, dark, amber-lit. Built to stamp on a truck door.</div>
+      </div>
+      <div class="sbs-card">
+        <div class="sbs-letter">Direction B</div>
+        <div class="sbs-swatch" style="background:#92400E;"></div>
+        <div class="sbs-name">The Grain</div>
+        <div class="sbs-descriptor">Warm</div>
+        <div class="sbs-tagline">Light, material-forward. The wood is the star.</div>
+      </div>
+      <div class="sbs-card">
+        <div class="sbs-letter">Direction C</div>
+        <div class="sbs-swatch" style="background:#B45309;"></div>
+        <div class="sbs-name">The Heritage</div>
+        <div class="sbs-descriptor">Established</div>
+        <div class="sbs-tagline">Badge-driven. Three generations in the mark.</div>
+      </div>
+    </div>
+    <p class="mix-note">You can pick one. Or you can mix: "I like the badge from C but the colors from A." We'll make it work.</p>
+  </div>
+
+  <!-- SLIDE 18: NEXT STEPS -->
+  <div class="slide slide-18" data-index="24">
+    <div class="slide-label" style="color:rgba(250,250,249,0.3);">Next Steps</div>
+    <h2>Ready when you are.</h2>
+    <div class="next-steps">
+      <div class="next-step">
+        <div class="next-step-num">01</div>
+        <p>Pick the direction that feels like you. A, B, or C. Or tell us what you want to mix.</p>
+      </div>
+      <div class="next-step">
+        <div class="next-step-num">02</div>
+        <p>We'll refine it, build the logo, and lock the full brand system.</p>
+      </div>
+      <div class="next-step">
+        <div class="next-step-num">03</div>
+        <p>Then we move into your website. Everything built on the same foundation.</p>
+      </div>
+    </div>
+    <p class="sign-off">Reply to this video or call us. No form required.</p>
+  </div>
+
+</div>
+
+<!-- Slide counter -->
+<div class="slide-counter" id="slideCounter">1 / 25</div>
+<div class="nav-hint">Arrow keys, click, or swipe to advance</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+  let transitioning = false;
+
+  function goTo(index) {
+    if (transitioning) return;
+    if (index < 0 || index >= slides.length) return;
+    if (index === current) return;
+
+    transitioning = true;
+
+    const prev = slides[current];
+    const next = slides[index];
+
+    prev.classList.add('exit');
+    prev.classList.remove('active');
+
+    setTimeout(() => {
+      prev.classList.remove('exit');
+      current = index;
+      next.classList.add('active');
+      updateCounter();
+      setTimeout(() => { transitioning = false; }, 360);
+    }, 260);
+  }
+
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
+
+  function updateCounter() {
+    document.getElementById('slideCounter').textContent = (current + 1) + ' / ' + slides.length;
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+      e.preventDefault();
+      next();
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      prev();
+    }
+  });
+
+  // Click navigation (click right half to advance, left half to go back)
+  document.getElementById('deck').addEventListener('click', (e) => {
+    const x = e.clientX;
+    const w = window.innerWidth;
+    if (x > w / 2) {
+      next();
+    } else {
+      prev();
+    }
+  });
+
+  // Touch swipe navigation
+  let touchStartX = null;
+  let touchStartY = null;
+
+  document.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  document.addEventListener('touchend', (e) => {
+    if (touchStartX === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+      if (dx < 0) { next(); } else { prev(); }
+    }
+    touchStartX = null;
+    touchStartY = null;
+  }, { passive: true });
+</script>
+
+</body>
+</html>
