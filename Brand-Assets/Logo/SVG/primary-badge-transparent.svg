@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="400" height="240">
+  <rect x="80" y="30" width="240" height="180" fill="none" stroke="#FAFAF9" stroke-width="2"/>
+  <rect x="88" y="38" width="224" height="164" fill="none" stroke="#FAFAF9" stroke-width="2"/>
+  <text x="200" y="100" text-anchor="middle" font-family="Oswald, Impact, sans-serif" font-weight="600" font-size="42" fill="#FAFAF9" letter-spacing="5">TOUGAS</text>
+  <text x="200" y="135" text-anchor="middle" font-family="Oswald, Impact, sans-serif" font-weight="600" font-size="26" fill="#FAFAF9" letter-spacing="4">TIMBERWORKS</text>
+  <rect x="180" y="148" width="40" height="2" fill="#B45309"/>
+  <text x="200" y="172" text-anchor="middle" font-family="Oswald, Impact, sans-serif" font-weight="600" font-size="12" fill="#B45309" letter-spacing="4">MILL. DRY. BUILD.</text>
+</svg>

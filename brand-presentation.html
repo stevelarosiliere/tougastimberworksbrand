@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tougas Timberworks — Brand Presentation</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Lora', serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.7;
+    color: #FAFAF9;
+    background: #292524;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :root {
+    --bg: #292524;
+    --deep: #1C1917;
+    --light: #FAFAF9;
+    --amber: #B45309;
+    --green: #365314;
+    --gray: #78716C;
+  }
+
+  /* ===== SLIDE LAYOUT ===== */
+  .slide {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 60px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .slide.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .slide-inner {
+    max-width: 1000px;
+    width: 100%;
+  }
+  .slide-number {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .bg-dark { background: var(--bg); }
+  .bg-deep { background: var(--deep); }
+  .bg-green { background: var(--green); }
+
+  /* ===== TYPOGRAPHY ===== */
+  h1, h2, h3, h4 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--light);
+    line-height: 1.15;
+  }
+  h1 { font-size: clamp(42px, 6vw, 72px); }
+  h2 { font-size: clamp(32px, 4vw, 52px); }
+  h3 { font-size: clamp(22px, 3vw, 32px); }
+  h4 { font-size: clamp(16px, 2vw, 22px); }
+
+  p, li, td, blockquote {
+    font-family: 'Lora', serif;
+    font-weight: 400;
+    color: var(--light);
+    line-height: 1.7;
+  }
+
+  .text-amber { color: var(--amber); }
+  .text-gray { color: var(--gray); }
+  .text-green { color: var(--green); }
+
+  .label {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  /* ===== BADGE LOCKUP ===== */
+  .badge {
+    display: inline-block;
+    position: relative;
+    padding: 6px;
+    border: 2px solid var(--light);
+  }
+  .badge-inner {
+    border: 2px solid var(--light);
+    padding: 36px 56px;
+    text-align: center;
+    min-width: 340px;
+  }
+  .badge-title {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: clamp(28px, 4vw, 44px);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--light);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .badge-subtitle {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: clamp(12px, 1.5vw, 16px);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-top: 4px;
+  }
+  .badge-divider {
+    width: 40px;
+    height: 2px;
+    background: var(--amber);
+    margin: 12px auto;
+  }
+
+  /* Badge variants */
+  .badge-sm {
+    padding: 4px;
+  }
+  .badge-sm .badge-inner {
+    padding: 20px 32px;
+    min-width: 200px;
+  }
+  .badge-sm .badge-title {
+    font-size: 22px;
+    letter-spacing: 0.12em;
+  }
+  .badge-sm .badge-subtitle {
+    font-size: 10px;
+  }
+  .badge-sm .badge-divider {
+    width: 24px;
+    margin: 8px auto;
+  }
+
+  .badge-dark-on-light {
+    border-color: var(--bg);
+  }
+  .badge-dark-on-light .badge-inner {
+    border-color: var(--bg);
+  }
+  .badge-dark-on-light .badge-title {
+    color: var(--bg);
+  }
+
+  .badge-amber {
+    border-color: var(--amber);
+  }
+  .badge-amber .badge-inner {
+    border-color: var(--amber);
+  }
+
+  /* Monogram */
+  .monogram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border: 2px solid var(--light);
+    position: relative;
+    padding: 4px;
+  }
+  .monogram-inner {
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .monogram-text {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: 0.15em;
+    color: var(--light);
+  }
+
+  /* Burn stamp */
+  .burn-stamp {
+    border-color: var(--amber);
+    opacity: 0.85;
+  }
+  .burn-stamp .badge-inner {
+    border-color: var(--amber);
+  }
+  .burn-stamp .badge-title {
+    color: var(--amber);
+  }
+  .burn-stamp .badge-subtitle {
+    color: #D97706;
+  }
+
+  /* Social avatar */
+  .social-avatar {
+    width: 100px;
+    height: 100px;
+    background: var(--deep);
+    border: 2px solid var(--light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 4px;
+  }
+  .social-avatar-inner {
+    width: 100%;
+    height: 100%;
+    border: 1.5px solid var(--light);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+  }
+  .social-avatar-text {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--light);
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+  .social-avatar-sub {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 6px;
+    letter-spacing: 0.25em;
+    color: var(--amber);
+    text-transform: uppercase;
+  }
+
+  /* ===== BLOCKQUOTE ===== */
+  blockquote {
+    border-left: 4px solid var(--amber);
+    padding: 24px 32px;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.8;
+    color: var(--light);
+    margin: 32px 0;
+    background: rgba(180, 83, 9, 0.06);
+  }
+
+  /* ===== TABLES ===== */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+  }
+  th {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--amber);
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 2px solid var(--gray);
+  }
+  td {
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(120, 113, 108, 0.3);
+    font-size: 16px;
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+
+  /* ===== NAV DOTS ===== */
+  .nav-dots {
+    position: fixed;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 100;
+  }
+  .nav-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--gray);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+  .nav-dot:hover {
+    border-color: var(--amber);
+  }
+  .nav-dot.active {
+    background: var(--amber);
+    border-color: var(--amber);
+  }
+
+  /* ===== COLOR SWATCH ===== */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+  }
+  .swatch {
+    text-align: center;
+  }
+  .swatch-block {
+    width: 100%;
+    aspect-ratio: 1.2;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(250, 250, 249, 0.1);
+  }
+  .swatch-name {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 4px;
+  }
+  .swatch-hex {
+    font-family: 'Lora', serif;
+    font-size: 14px;
+    color: var(--gray);
+  }
+  .swatch-role {
+    font-family: 'Lora', serif;
+    font-size: 12px;
+    color: var(--gray);
+    margin-top: 2px;
+  }
+
+  /* ===== TYPE SPECIMEN ===== */
+  .type-specimen {
+    margin: 40px 0;
+  }
+  .type-specimen-label {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 12px;
+  }
+  .type-display { font-family: 'Oswald', sans-serif; font-weight: 600; text-transform: uppercase; }
+  .type-body { font-family: 'Lora', serif; font-weight: 400; }
+
+  /* ===== SAY THIS / NOT THIS ===== */
+  .voice-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(120, 113, 108, 0.3);
+  }
+  .voice-pair:last-child { border-bottom: none; }
+  .voice-do {
+    border-left: 3px solid var(--green);
+    padding-left: 20px;
+  }
+  .voice-dont {
+    border-left: 3px solid rgba(120, 113, 108, 0.4);
+    padding-left: 20px;
+    opacity: 0.6;
+  }
+  .voice-label {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .voice-do .voice-label { color: var(--green); }
+  .voice-dont .voice-label { color: var(--gray); }
+
+  /* ===== MOCKUP CARDS ===== */
+  .mockup-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-top: 32px;
+  }
+  .mockup-card {
+    background: var(--deep);
+    border: 1px solid rgba(120, 113, 108, 0.3);
+    padding: 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 240px;
+  }
+  .mockup-label {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-top: 20px;
+  }
+
+  /* ===== LOGO GRID ===== */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 40px;
+  }
+  .logo-cell {
+    background: var(--deep);
+    border: 1px solid rgba(120, 113, 108, 0.2);
+    padding: 40px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 220px;
+    gap: 16px;
+  }
+  .logo-cell-light {
+    background: var(--light);
+  }
+
+  /* ===== SERVICE CARDS ===== */
+  .service-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 32px;
+  }
+  .service-card {
+    border: 1px solid rgba(120, 113, 108, 0.3);
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .service-card h4 {
+    margin-bottom: 12px;
+    font-size: 16px;
+    letter-spacing: 0.12em;
+  }
+  .service-card p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* ===== FILE LIST ===== */
+  .file-list {
+    list-style: none;
+    margin-top: 24px;
+  }
+  .file-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(120, 113, 108, 0.2);
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+  .file-name {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--light);
+    min-width: 280px;
+  }
+  .file-desc {
+    font-family: 'Lora', serif;
+    font-size: 14px;
+    color: var(--gray);
+  }
+
+  /* ===== IS / IS NOT TABLE ===== */
+  .personality-table td:first-child {
+    color: var(--light);
+    font-weight: 400;
+  }
+  .personality-table td:nth-child(2) {
+    color: var(--gray);
+    font-style: italic;
+  }
+
+  /* ===== HERO MOCKUP ===== */
+  .hero-mockup {
+    background: var(--deep);
+    border: 1px solid rgba(120, 113, 108, 0.3);
+    padding: 60px 40px;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .hero-mockup .badge {
+    margin-bottom: 24px;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 24px;
+  }
+  .cta-primary {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--amber);
+    color: var(--light);
+    padding: 14px 32px;
+    border: none;
+    cursor: pointer;
+  }
+  .cta-secondary {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: transparent;
+    color: var(--light);
+    padding: 14px 32px;
+    border: 2px solid var(--light);
+    cursor: pointer;
+  }
+
+  /* ===== MANIFESTO ===== */
+  .manifesto p {
+    font-size: 17px;
+    margin-bottom: 20px;
+    line-height: 1.85;
+    color: rgba(250, 250, 249, 0.9);
+  }
+
+  /* ===== SHOT LIST ===== */
+  .shot-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .shot-block {
+    text-align: center;
+    padding: 24px 12px;
+    border: 1px solid rgba(120, 113, 108, 0.3);
+  }
+  .shot-count {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+    color: var(--amber);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .shot-label {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .slide { padding: 60px 24px; }
+    .swatch-grid { grid-template-columns: repeat(2, 1fr); }
+    .voice-pair { grid-template-columns: 1fr; }
+    .mockup-grid { grid-template-columns: 1fr; }
+    .logo-grid { grid-template-columns: repeat(2, 1fr); }
+    .service-cards { grid-template-columns: 1fr; }
+    .shot-grid { grid-template-columns: repeat(3, 1fr); }
+    .badge-inner { padding: 24px 32px; min-width: auto; }
+    .nav-dots { display: none; }
+    .file-list li { flex-direction: column; gap: 4px; }
+    .file-name { min-width: auto; }
+  }
+  @media (max-width: 480px) {
+    .swatch-grid { grid-template-columns: 1fr; }
+    .logo-grid { grid-template-columns: 1fr; }
+    .shot-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV DOTS -->
+<nav class="nav-dots" id="navDots"></nav>
+
+<!-- ========== SLIDE 1: COVER ========== -->
+<section class="slide bg-deep" id="slide-1">
+  <div class="slide-inner" style="text-align: center;">
+    <div class="badge" style="margin-bottom: 40px;">
+      <div class="badge-inner">
+        <div class="badge-title">Tougas<br>Timberworks</div>
+        <div class="badge-divider"></div>
+        <div class="badge-subtitle">Mill. Dry. Build.</div>
+      </div>
+    </div>
+    <p style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: clamp(16px, 2vw, 22px); letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray); margin-top: 32px;">
+      Built by hand. Backed by name.
+    </p>
+    <p style="font-family: 'Lora', serif; font-size: 14px; color: var(--gray); margin-top: 48px;">
+      Brand Presentation &nbsp;|&nbsp; Prepared by BuilderGrowth &nbsp;|&nbsp; March 2026
+    </p>
+  </div>
+  <div class="slide-number">01 / 15</div>
+</section>
+
+<!-- ========== SLIDE 2: THE STORY ========== -->
+<section class="slide bg-dark" id="slide-2">
+  <div class="slide-inner">
+    <span class="label">The Story</span>
+    <blockquote>
+      "For years doing it as a hobby, you fantasize about your job being in the woodshop. Overnight, I was like, it's not really that much of a fantasy. You can do this if you work hard at it."
+    </blockquote>
+    <p style="margin-top: 32px; font-size: 17px; color: rgba(250, 250, 249, 0.85);">
+      Eric Tougas didn't ease into this. He didn't test the waters, run a side hustle, or build a business plan. He looked at twenty years of nights and weekends in the shop, looked at the kiln and the slabs drying in the yard, and made a decision. The hobby became the job. The job became the standard he measures everything against. This is a brand built on that conviction.
+    </p>
+  </div>
+  <div class="slide-number">02 / 15</div>
+</section>
+
+<!-- ========== SLIDE 3: BRAND MANIFESTO ========== -->
+<section class="slide bg-deep" id="slide-3">
+  <div class="slide-inner">
+    <span class="label">Brand Manifesto</span>
+    <h2 style="margin-bottom: 40px;">The Whole Point</h2>
+    <div class="manifesto">
+      <p>For twenty years, the woodshop was where I went to clear my head. Nights. Weekends. Whenever the real job let me go. My grandfather made toys by hand and gave them away. My father spent seven years building a canoe. Wood was never a business in our family. It was just what we did. Then I found chainsaw milling, invested in a kiln, and something clicked. Not a slow realization. A switch. I looked at the shop, looked at the stack of slabs drying in the yard, and thought: you can do this if you work hard at it. So I did. Overnight, the hobby became the job. And the job became the standard I measure everything against.</p>
+
+      <p>Here is what I actually do. I source raw logs from local tree services and private land across Fairfield County and beyond. I mill them on site with a chainsaw mill or haul them back to the shop. Black walnut, white oak, cherry, sycamore, maple. I know what each species wants to do when it dries, how it moves, where it checks. Every board goes into my kiln, where I control the temperature and humidity until the moisture content is exactly where it needs to be. Then I build. Countertops, dining tables, fireplace mantles, floating shelves, stair treads, beam casings. Live edge when the slab calls for it. Clean lines when the space demands it. One person handles the full cycle, log to finished piece, because that is the only way to guarantee what comes out the other end.</p>
+
+      <p>Nobody else in this area does all four steps. Source, mill, dry, build. Most shops buy pre-dried lumber from a distributor and start from there. That is fine work, and some of those shops are my clients. They bring their wood to my kiln because they trust the process. Competitors buying kiln time from you is about as honest a reference as it gets. When you control every stage, you catch problems early. A crack that would have become a split. A pocket of moisture that would have warped a tabletop six months after install. I would rather find it in the kiln than have you find it in your kitchen.</p>
+
+      <p>What Tougas Timberworks means is simple. You get a piece of furniture built by someone who touched the wood at every step. Someone who can tell you which town the tree came from, how long it dried, and why he chose that particular slab for your table. The name on the business is the name of the person doing the work. That is not a tagline. That is the whole point.</p>
+    </div>
+  </div>
+  <div class="slide-number">03 / 15</div>
+</section>
+
+<!-- ========== SLIDE 4: BRAND ESSENCE ========== -->
+<section class="slide bg-dark" id="slide-4">
+  <div class="slide-inner" style="text-align: center;">
+    <span class="label">Brand Essence</span>
+    <h1 style="font-size: clamp(60px, 10vw, 120px); margin-bottom: 32px;">Conviction.</h1>
+    <p style="max-width: 600px; margin: 0 auto; font-size: 18px; color: rgba(250, 250, 249, 0.85);">
+      Eric bet on himself. Not gradually. Overnight. Twenty years of craft compressed into a single decision. That certainty is the foundation of everything Tougas Timberworks communicates. Every slab he mills, every board he dries, every piece he builds carries the weight of someone who chose this and never looked back.
+    </p>
+  </div>
+  <div class="slide-number">04 / 15</div>
+</section>
+
+<!-- ========== SLIDE 5: BRAND PERSONALITY ========== -->
+<section class="slide bg-deep" id="slide-5">
+  <div class="slide-inner">
+    <span class="label">Brand Personality</span>
+    <h2 style="margin-bottom: 40px;">Refined Grit</h2>
+    <table class="personality-table">
+      <thead>
+        <tr>
+          <th>Is</th>
+          <th>Is Not</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Ford-confident</td><td>Precious or overthought</td></tr>
+        <tr><td>Fairfield County refined</td><td>Brooklyn hipster</td></tr>
+        <tr><td>Earthy and direct</td><td>Folksy or backwoods</td></tr>
+        <tr><td>A bet that paid off</td><td>A hobby that grew</td></tr>
+        <tr><td>Heritage as depth</td><td>"Three generations" headline</td></tr>
+        <tr><td>Built to last</td><td>Trendy or seasonal</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="slide-number">05 / 15</div>
+</section>
+
+<!-- ========== SLIDE 6: TAGLINE ========== -->
+<section class="slide bg-dark" id="slide-6">
+  <div class="slide-inner" style="text-align: center;">
+    <span class="label">Tagline</span>
+    <h1 style="margin-bottom: 48px;">Built by Hand.<br>Backed by Name.</h1>
+
+    <!-- In badge context -->
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 48px; margin-top: 40px;">
+      <div>
+        <div class="badge badge-sm">
+          <div class="badge-inner">
+            <div class="badge-title" style="font-size: 18px;">Tougas<br>Timberworks</div>
+            <div class="badge-divider"></div>
+            <div class="badge-subtitle" style="font-size: 8px;">Mill. Dry. Build.</div>
+          </div>
+        </div>
+        <p style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.2em; color: var(--gray); margin-top: 12px; text-transform: uppercase;">On badge</p>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <p style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 20px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--light);">Built by hand. Backed by name.</p>
+        <p style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.2em; color: var(--gray); margin-top: 12px; text-transform: uppercase;">On dark</p>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--light); padding: 24px 32px; border-radius: 2px;">
+        <p style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 20px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bg);">Built by hand. Backed by name.</p>
+        <p style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.2em; color: var(--gray); margin-top: 12px; text-transform: uppercase;">On light</p>
+      </div>
+    </div>
+
+    <p style="max-width: 600px; margin: 48px auto 0; font-size: 16px; color: rgba(250, 250, 249, 0.8);">
+      Two promises in six words. The first is craft. The second is accountability. "Built by hand" says how. "Backed by name" says by whom. It works on a badge, a truck, a business card, or a website hero. It scales from a burn stamp on the back of a slab to a billboard on I-95.
+    </p>
+  </div>
+  <div class="slide-number">06 / 15</div>
+</section>
+
+<!-- ========== SLIDE 7: COLOR PALETTE ========== -->
+<section class="slide bg-dark" id="slide-7">
+  <div class="slide-inner">
+    <span class="label">Color Palette</span>
+    <h2 style="margin-bottom: 16px;">Heritage Dark</h2>
+    <p style="color: var(--gray); margin-bottom: 8px;">Dark mode brand. Heavy, established, American. Burnt amber and forest green as accent anchors.</p>
+    <div class="swatch-grid">
+      <div class="swatch">
+        <div class="swatch-block" style="background: #292524;"></div>
+        <div class="swatch-name">Dark Brown</div>
+        <div class="swatch-hex">#292524</div>
+        <div class="swatch-role">Background / Primary</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background: #1C1917;"></div>
+        <div class="swatch-name">Near Black</div>
+        <div class="swatch-hex">#1C1917</div>
+        <div class="swatch-role">Deep Dark</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background: #FAFAF9; border-color: rgba(120,113,108,0.5);"></div>
+        <div class="swatch-name">Off White</div>
+        <div class="swatch-hex">#FAFAF9</div>
+        <div class="swatch-role">Light / Text on Dark</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background: #B45309;"></div>
+        <div class="swatch-name">Burnt Amber</div>
+        <div class="swatch-hex">#B45309</div>
+        <div class="swatch-role">Primary Accent</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background: #365314;"></div>
+        <div class="swatch-name">Forest Green</div>
+        <div class="swatch-hex">#365314</div>
+        <div class="swatch-role">Secondary Accent</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background: #78716C;"></div>
+        <div class="swatch-name">Warm Gray</div>
+        <div class="swatch-hex">#78716C</div>
+        <div class="swatch-role">Neutral</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">07 / 15</div>
+</section>
+
+<!-- ========== SLIDE 8: TYPOGRAPHY ========== -->
+<section class="slide bg-deep" id="slide-8">
+  <div class="slide-inner">
+    <span class="label">Typography</span>
+    <h2 style="margin-bottom: 48px;">Type System</h2>
+
+    <div class="type-specimen">
+      <div class="type-specimen-label">Display &mdash; Oswald 600</div>
+      <p class="type-display" style="font-size: 56px; color: var(--light); letter-spacing: 0.08em; line-height: 1.1;">TOUGAS TIMBERWORKS</p>
+      <p class="type-display" style="font-size: 36px; color: var(--light); letter-spacing: 0.06em; margin-top: 8px;">BUILT BY HAND. BACKED BY NAME.</p>
+      <p class="type-display" style="font-size: 22px; color: var(--gray); letter-spacing: 0.1em; margin-top: 8px;">MILL. DRY. BUILD.</p>
+    </div>
+
+    <div style="height: 1px; background: rgba(120, 113, 108, 0.3); margin: 40px 0;"></div>
+
+    <div class="type-specimen">
+      <div class="type-specimen-label">Body &mdash; Lora 400</div>
+      <p class="type-body" style="font-size: 22px; color: var(--light); line-height: 1.7; margin-bottom: 12px;">
+        Nobody else in this area does all four steps. Source, mill, dry, build.
+      </p>
+      <p class="type-body" style="font-size: 17px; color: rgba(250, 250, 249, 0.8); line-height: 1.8; margin-bottom: 12px;">
+        Every board goes into my kiln, where I control the temperature and humidity until the moisture content is exactly where it needs to be.
+      </p>
+      <p class="type-body" style="font-size: 14px; color: var(--gray); line-height: 1.7; font-style: italic;">
+        Black walnut, white oak, cherry, sycamore, maple. I know what each species wants to do when it dries, how it moves, where it checks.
+      </p>
+    </div>
+
+    <div style="height: 1px; background: rgba(120, 113, 108, 0.3); margin: 40px 0;"></div>
+
+    <div class="type-specimen">
+      <div class="type-specimen-label">Type Scale</div>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; align-items: baseline; gap: 24px;">
+          <span style="font-family: 'Oswald'; font-weight: 600; font-size: 11px; letter-spacing: 0.15em; color: var(--gray); min-width: 60px; text-transform: uppercase;">H1</span>
+          <span class="type-display" style="font-size: 48px; color: var(--light); letter-spacing: 0.06em;">CONVICTION</span>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 24px;">
+          <span style="font-family: 'Oswald'; font-weight: 600; font-size: 11px; letter-spacing: 0.15em; color: var(--gray); min-width: 60px; text-transform: uppercase;">H2</span>
+          <span class="type-display" style="font-size: 36px; color: var(--light); letter-spacing: 0.06em;">REFINED GRIT</span>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 24px;">
+          <span style="font-family: 'Oswald'; font-weight: 600; font-size: 11px; letter-spacing: 0.15em; color: var(--gray); min-width: 60px; text-transform: uppercase;">H3</span>
+          <span class="type-display" style="font-size: 26px; color: var(--light); letter-spacing: 0.06em;">MILL. DRY. BUILD.</span>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 24px;">
+          <span style="font-family: 'Oswald'; font-weight: 600; font-size: 11px; letter-spacing: 0.15em; color: var(--gray); min-width: 60px; text-transform: uppercase;">Label</span>
+          <span style="font-family: 'Oswald'; font-weight: 600; font-size: 13px; letter-spacing: 0.2em; color: var(--amber); text-transform: uppercase;">THE STORY</span>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 24px;">
+          <span style="font-family: 'Oswald'; font-weight: 600; font-size: 11px; letter-spacing: 0.15em; color: var(--gray); min-width: 60px; text-transform: uppercase;">Body</span>
+          <span class="type-body" style="font-size: 17px; color: var(--light);">The name on the business is the name of the person doing the work.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">08 / 15</div>
+</section>
+
+<!-- ========== SLIDE 9: LOGO SYSTEM ========== -->
+<section class="slide bg-dark" id="slide-9">
+  <div class="slide-inner">
+    <span class="label">Logo System</span>
+    <h2 style="margin-bottom: 16px;">Badge Lockup</h2>
+    <p style="color: var(--gray); margin-bottom: 8px;">Badge-driven identity designed for stamps, patches, labels, and digital.</p>
+
+    <div class="logo-grid">
+      <!-- Primary Badge -->
+      <div class="logo-cell">
+        <div class="badge badge-sm">
+          <div class="badge-inner">
+            <div class="badge-title" style="font-size: 18px;">Tougas<br>Timberworks</div>
+            <div class="badge-divider"></div>
+            <div class="badge-subtitle" style="font-size: 9px;">Mill. Dry. Build.</div>
+          </div>
+        </div>
+        <span class="mockup-label">Primary</span>
+      </div>
+
+      <!-- Stacked Badge -->
+      <div class="logo-cell">
+        <div class="badge badge-sm">
+          <div class="badge-inner" style="padding: 16px 24px;">
+            <div class="badge-title" style="font-size: 14px; letter-spacing: 0.18em;">Tougas<br>Timberworks</div>
+            <div class="badge-divider" style="width: 16px; margin: 6px auto;"></div>
+            <div class="badge-subtitle" style="font-size: 7px;">Mill. Dry. Build.</div>
+          </div>
+        </div>
+        <span class="mockup-label">Stacked</span>
+      </div>
+
+      <!-- Monogram -->
+      <div class="logo-cell">
+        <div class="monogram">
+          <div class="monogram-inner">
+            <span class="monogram-text">TTW</span>
+          </div>
+        </div>
+        <span class="mockup-label">Monogram</span>
+      </div>
+
+      <!-- Burn Stamp -->
+      <div class="logo-cell">
+        <div class="badge badge-sm burn-stamp">
+          <div class="badge-inner" style="padding: 16px 24px;">
+            <div class="badge-title" style="font-size: 14px; letter-spacing: 0.18em;">Tougas<br>Timberworks</div>
+            <div class="badge-divider" style="width: 16px; margin: 6px auto; background: #D97706;"></div>
+            <div class="badge-subtitle" style="font-size: 7px;">Mill. Dry. Build.</div>
+          </div>
+        </div>
+        <span class="mockup-label">Burn Stamp</span>
+      </div>
+
+      <!-- Dark on Light -->
+      <div class="logo-cell logo-cell-light">
+        <div class="badge badge-sm badge-dark-on-light">
+          <div class="badge-inner" style="padding: 16px 24px;">
+            <div class="badge-title" style="font-size: 14px; letter-spacing: 0.18em;">Tougas<br>Timberworks</div>
+            <div class="badge-divider" style="width: 16px; margin: 6px auto; background: var(--bg);"></div>
+            <div class="badge-subtitle" style="font-size: 7px; color: var(--bg);">Mill. Dry. Build.</div>
+          </div>
+        </div>
+        <span class="mockup-label" style="color: var(--bg);">Dark on Light</span>
+      </div>
+
+      <!-- Social Avatar -->
+      <div class="logo-cell">
+        <div class="social-avatar">
+          <div class="social-avatar-inner">
+            <span class="social-avatar-text">Tougas</span>
+            <span class="social-avatar-text">Timber-</span>
+            <span class="social-avatar-text">works</span>
+            <span class="social-avatar-sub">Mill. Dry. Build.</span>
+          </div>
+        </div>
+        <span class="mockup-label">Social Avatar</span>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">09 / 15</div>
+</section>
+
+<!-- ========== SLIDE 10: APPLICATIONS ========== -->
+<section class="slide bg-deep" id="slide-10">
+  <div class="slide-inner">
+    <span class="label">Applications</span>
+    <h2 style="margin-bottom: 32px;">In the Wild</h2>
+
+    <div class="mockup-grid">
+      <!-- Business Card -->
+      <div class="mockup-card">
+        <div style="width: 280px; height: 160px; background: var(--bg); border: 1px solid rgba(120,113,108,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 16px;">
+          <div style="border: 1.5px solid var(--light); padding: 2px; display: inline-block;">
+            <div style="border: 1.5px solid var(--light); padding: 8px 16px; text-align: center;">
+              <div style="font-family: 'Oswald'; font-weight: 600; font-size: 12px; letter-spacing: 0.12em; color: var(--light); text-transform: uppercase;">Tougas<br>Timberworks</div>
+              <div style="width: 12px; height: 1.5px; background: var(--amber); margin: 4px auto;"></div>
+              <div style="font-family: 'Oswald'; font-weight: 600; font-size: 5px; letter-spacing: 0.3em; color: var(--amber); text-transform: uppercase;">Mill. Dry. Build.</div>
+            </div>
+          </div>
+          <div style="margin-top: 4px; text-align: center;">
+            <div style="font-family: 'Oswald'; font-weight: 600; font-size: 8px; letter-spacing: 0.15em; color: var(--light); text-transform: uppercase;">Eric Tougas</div>
+            <div style="font-family: 'Lora'; font-size: 6px; color: var(--gray);">Monroe, Connecticut</div>
+          </div>
+        </div>
+        <span class="mockup-label">Business Card</span>
+      </div>
+
+      <!-- T-Shirt -->
+      <div class="mockup-card">
+        <div style="width: 180px; height: 200px; background: #1a1816; border-radius: 4px 4px 0 0; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
+          <div style="width: 8px; height: 8px; background: #1a1816; border-radius: 50%; position: absolute; top: -4px;"></div>
+          <div style="border: 1px solid rgba(250,250,249,0.6); padding: 2px; display: inline-block;">
+            <div style="border: 1px solid rgba(250,250,249,0.6); padding: 10px 18px; text-align: center;">
+              <div style="font-family: 'Oswald'; font-weight: 600; font-size: 10px; letter-spacing: 0.12em; color: rgba(250,250,249,0.8); text-transform: uppercase;">Tougas<br>Timberworks</div>
+              <div style="width: 10px; height: 1px; background: var(--amber); margin: 4px auto;"></div>
+              <div style="font-family: 'Oswald'; font-weight: 600; font-size: 5px; letter-spacing: 0.25em; color: var(--amber); text-transform: uppercase;">Mill. Dry. Build.</div>
+            </div>
+          </div>
+        </div>
+        <span class="mockup-label">T-Shirt</span>
+      </div>
+
+      <!-- Truck Decal -->
+      <div class="mockup-card">
+        <div style="width: 280px; height: 120px; background: #2a2825; border-radius: 4px; display: flex; align-items: center; justify-content: center; gap: 20px; padding: 16px; position: relative;">
+          <div style="position: absolute; bottom: 0; left: 20px; width: 28px; height: 28px; border-radius: 50%; border: 3px solid #444; background: #333;"></div>
+          <div style="position: absolute; bottom: 0; right: 40px; width: 28px; height: 28px; border-radius: 50%; border: 3px solid #444; background: #333;"></div>
+          <div style="border: 1px solid rgba(250,250,249,0.7); padding: 2px; display: inline-block;">
+            <div style="border: 1px solid rgba(250,250,249,0.7); padding: 6px 14px; text-align: center;">
+              <div style="font-family: 'Oswald'; font-weight: 600; font-size: 9px; letter-spacing: 0.1em; color: var(--light); text-transform: uppercase;">Tougas<br>Timberworks</div>
+              <div style="width: 8px; height: 1px; background: var(--amber); margin: 3px auto;"></div>
+              <div style="font-family: 'Oswald'; font-weight: 600; font-size: 4px; letter-spacing: 0.2em; color: var(--amber); text-transform: uppercase;">Mill. Dry. Build.</div>
+            </div>
+          </div>
+          <div style="text-align: left;">
+            <div style="font-family: 'Oswald'; font-weight: 600; font-size: 9px; letter-spacing: 0.12em; color: var(--light); text-transform: uppercase;">Built by Hand.</div>
+            <div style="font-family: 'Oswald'; font-weight: 600; font-size: 9px; letter-spacing: 0.12em; color: var(--light); text-transform: uppercase;">Backed by Name.</div>
+            <div style="font-family: 'Lora'; font-size: 6px; color: var(--gray); margin-top: 4px;">Monroe, CT</div>
+          </div>
+        </div>
+        <span class="mockup-label">Truck Decal</span>
+      </div>
+
+      <!-- Burn Stamp -->
+      <div class="mockup-card">
+        <div style="width: 200px; height: 160px; background: linear-gradient(135deg, #8B6F47 0%, #6B5535 100%); display: flex; align-items: center; justify-content: center; border-radius: 2px;">
+          <div style="border: 1.5px solid rgba(180,83,9,0.7); padding: 2px; display: inline-block;">
+            <div style="border: 1.5px solid rgba(180,83,9,0.7); padding: 10px 18px; text-align: center;">
+              <div style="font-family: 'Oswald'; font-weight: 600; font-size: 11px; letter-spacing: 0.12em; color: rgba(180,83,9,0.85); text-transform: uppercase;">Tougas<br>Timberworks</div>
+              <div style="width: 10px; height: 1px; background: rgba(180,83,9,0.6); margin: 4px auto;"></div>
+              <div style="font-family: 'Oswald'; font-weight: 600; font-size: 5px; letter-spacing: 0.25em; color: rgba(180,83,9,0.7); text-transform: uppercase;">Mill. Dry. Build.</div>
+            </div>
+          </div>
+        </div>
+        <span class="mockup-label">Burn Stamp on Wood</span>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">10 / 15</div>
+</section>
+
+<!-- ========== SLIDE 11: VOICE + TONE ========== -->
+<section class="slide bg-dark" id="slide-11">
+  <div class="slide-inner">
+    <span class="label">Voice + Tone</span>
+    <h2 style="margin-bottom: 40px;">Say This, Not That</h2>
+
+    <div class="voice-pair">
+      <div class="voice-do">
+        <div class="voice-label">Say This</div>
+        <p style="font-size: 16px;">"Black walnut countertop, kiln dried, custom fit to your kitchen."</p>
+      </div>
+      <div class="voice-dont">
+        <div class="voice-label">Not This</div>
+        <p style="font-size: 16px;">"A bespoke, artisanal countertop handcrafted with love."</p>
+      </div>
+    </div>
+
+    <div class="voice-pair">
+      <div class="voice-do">
+        <div class="voice-label">Say This</div>
+        <p style="font-size: 16px;">"I source the wood, mill it, dry it, and build your piece. Start to finish."</p>
+      </div>
+      <div class="voice-dont">
+        <div class="voice-label">Not This</div>
+        <p style="font-size: 16px;">"We leverage our vertically integrated supply chain."</p>
+      </div>
+    </div>
+
+    <div class="voice-pair">
+      <div class="voice-do">
+        <div class="voice-label">Say This</div>
+        <p style="font-size: 16px;">"That slab has been in the kiln for three weeks. It's ready."</p>
+      </div>
+      <div class="voice-dont">
+        <div class="voice-label">Not This</div>
+        <p style="font-size: 16px;">"Our premium lumber undergoes a meticulous drying process."</p>
+      </div>
+    </div>
+
+    <div class="voice-pair">
+      <div class="voice-do">
+        <div class="voice-label">Say This</div>
+        <p style="font-size: 16px;">"Live edge mantle, white oak, 8 feet. $2,200 installed."</p>
+      </div>
+      <div class="voice-dont">
+        <div class="voice-label">Not This</div>
+        <p style="font-size: 16px;">"Rustic charm meets modern elegance in this one-of-a-kind piece."</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">11 / 15</div>
+</section>
+
+<!-- ========== SLIDE 12: PHOTOGRAPHY ========== -->
+<section class="slide bg-deep" id="slide-12">
+  <div class="slide-inner">
+    <span class="label">Photography</span>
+    <h2 style="margin-bottom: 16px;">Shot List</h2>
+    <p style="color: var(--gray); margin-bottom: 32px;">31 shots across 5 priority categories. Moody, natural light, nothing staged.</p>
+
+    <div class="shot-grid">
+      <div class="shot-block">
+        <div class="shot-count">10</div>
+        <div class="shot-label">The Work</div>
+      </div>
+      <div class="shot-block">
+        <div class="shot-count">8</div>
+        <div class="shot-label">The Wood</div>
+      </div>
+      <div class="shot-block">
+        <div class="shot-count">6</div>
+        <div class="shot-label">Finished Pieces</div>
+      </div>
+      <div class="shot-block">
+        <div class="shot-count">4</div>
+        <div class="shot-label">The Shop</div>
+      </div>
+      <div class="shot-block">
+        <div class="shot-count">3</div>
+        <div class="shot-label">The Landscape</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 48px;">
+      <h4 style="color: var(--amber); margin-bottom: 16px;">Priority Shots</h4>
+      <table>
+        <tbody>
+          <tr><td style="color: var(--amber); font-family: 'Oswald'; font-weight: 600; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; width: 140px;">The Work</td><td style="font-size: 15px;">Chainsaw milling on site. Kiln loading. Hand planing. Sanding. Finishing. Eric's hands on the wood.</td></tr>
+          <tr><td style="color: var(--amber); font-family: 'Oswald'; font-weight: 600; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;">The Wood</td><td style="font-size: 15px;">Raw logs on the trailer. Stacked slabs drying. End grain close-ups. Species variety. Kiln interior.</td></tr>
+          <tr><td style="color: var(--amber); font-family: 'Oswald'; font-weight: 600; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;">Finished</td><td style="font-size: 15px;">Installed countertops. Dining tables in homes. Mantles above fireplaces. Floating shelves. Detail shots.</td></tr>
+          <tr><td style="color: var(--amber); font-family: 'Oswald'; font-weight: 600; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;">The Shop</td><td style="font-size: 15px;">Wide angle of the workspace. Tool wall. Kiln exterior. Sawdust on the floor.</td></tr>
+          <tr><td style="color: var(--amber); font-family: 'Oswald'; font-weight: 600; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;">Landscape</td><td style="font-size: 15px;">Connecticut woodland. Log piles. Fairfield County feel. Seasons.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="slide-number">12 / 15</div>
+</section>
+
+<!-- ========== SLIDE 13: WEBSITE PREVIEW ========== -->
+<section class="slide bg-dark" id="slide-13">
+  <div class="slide-inner">
+    <span class="label">Website Preview</span>
+    <h2 style="margin-bottom: 32px;">Digital Home</h2>
+
+    <!-- Hero mockup -->
+    <div class="hero-mockup">
+      <div class="badge" style="margin-bottom: 20px;">
+        <div class="badge-inner" style="padding: 24px 40px;">
+          <div class="badge-title" style="font-size: 28px;">Tougas<br>Timberworks</div>
+          <div class="badge-divider"></div>
+          <div class="badge-subtitle" style="font-size: 10px;">Mill. Dry. Build.</div>
+        </div>
+      </div>
+      <p style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gray); margin-bottom: 8px;">Built by hand. Backed by name.</p>
+      <p style="font-family: 'Lora', serif; font-size: 14px; color: var(--gray);">Monroe, Connecticut</p>
+      <div class="hero-ctas">
+        <button class="cta-primary">View the Work</button>
+        <button class="cta-secondary">Get a Quote</button>
+      </div>
+    </div>
+
+    <!-- Service cards -->
+    <div class="service-cards">
+      <div class="service-card">
+        <h4>Custom Furniture</h4>
+        <p>Dining tables, countertops, mantles, shelves, stair treads. Live edge or clean lines. One person, log to finished piece.</p>
+      </div>
+      <div class="service-card">
+        <h4>Kiln Dried Lumber</h4>
+        <p>Black walnut, white oak, cherry, sycamore, maple. Locally sourced, milled, and dried to exact moisture content.</p>
+      </div>
+      <div class="service-card">
+        <h4>Kiln Drying Services</h4>
+        <p>Bring your wood to a kiln you can trust. Controlled temperature and humidity. Used by other shops across the region.</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">13 / 15</div>
+</section>
+
+<!-- ========== SLIDE 14: DELIVERABLES ========== -->
+<section class="slide bg-green" id="slide-14">
+  <div class="slide-inner">
+    <span class="label" style="color: var(--light); opacity: 0.7;">Deliverables + Files</span>
+    <h2 style="margin-bottom: 32px;">What You Get</h2>
+
+    <ul class="file-list">
+      <li>
+        <span class="file-name">brand-dna.md</span>
+        <span class="file-desc">Core brand strategy. Essence, personality, positioning, audience.</span>
+      </li>
+      <li>
+        <span class="file-name">brand-manifesto.md</span>
+        <span class="file-desc">Eric's story in his own voice. The foundation for all copy.</span>
+      </li>
+      <li>
+        <span class="file-name">style-guide.html</span>
+        <span class="file-desc">Interactive design system. Colors, type, logo, photography, voice.</span>
+      </li>
+      <li>
+        <span class="file-name">landing-page-copy.md</span>
+        <span class="file-desc">Full website copy. Hero, services, about, trust signals, CTAs.</span>
+      </li>
+      <li>
+        <span class="file-name">brand-presentation.html</span>
+        <span class="file-desc">This file. The complete brand story, designed for review and handoff.</span>
+      </li>
+    </ul>
+
+    <p style="margin-top: 40px; font-size: 14px; color: rgba(250, 250, 249, 0.6);">
+      All files located in <span style="font-family: monospace; background: rgba(0,0,0,0.3); padding: 2px 8px; border-radius: 2px;">1-PROJECTS/Tougas-Timberworks/</span>
+    </p>
+  </div>
+  <div class="slide-number">14 / 15</div>
+</section>
+
+<!-- ========== SLIDE 15: CLOSE ========== -->
+<section class="slide bg-deep" id="slide-15">
+  <div class="slide-inner" style="text-align: center;">
+    <div class="badge" style="margin-bottom: 40px;">
+      <div class="badge-inner" style="padding: 40px 60px;">
+        <div class="badge-title" style="font-size: clamp(32px, 5vw, 52px);">Tougas<br>Timberworks</div>
+        <div class="badge-divider"></div>
+        <div class="badge-subtitle">Mill. Dry. Build.</div>
+      </div>
+    </div>
+    <p style="font-family: 'Oswald', sans-serif; font-weight: 600; font-size: clamp(18px, 2.5vw, 26px); letter-spacing: 0.18em; text-transform: uppercase; color: var(--light); margin-top: 32px;">
+      Built by hand. Backed by name.
+    </p>
+    <p style="font-family: 'Lora', serif; font-size: 16px; color: var(--gray); margin-top: 24px;">
+      Monroe, Connecticut
+    </p>
+    <div style="width: 40px; height: 2px; background: var(--amber); margin: 40px auto;"></div>
+    <p style="font-family: 'Lora', serif; font-size: 17px; color: rgba(250, 250, 249, 0.7); font-style: italic; max-width: 520px; margin: 0 auto;">
+      "The name on the business is the name of the person doing the work."
+    </p>
+  </div>
+  <div class="slide-number">15 / 15</div>
+</section>
+
+<script>
+  // Build nav dots
+  const totalSlides = 15;
+  const navDots = document.getElementById('navDots');
+  for (let i = 1; i <= totalSlides; i++) {
+    const dot = document.createElement('button');
+    dot.className = 'nav-dot';
+    dot.dataset.slide = i;
+    dot.setAttribute('aria-label', 'Go to slide ' + i);
+    dot.addEventListener('click', () => {
+      document.getElementById('slide-' + i).scrollIntoView({ behavior: 'smooth' });
+    });
+    navDots.appendChild(dot);
+  }
+
+  // Intersection Observer for fade-in + active dot
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.nav-dot');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        const id = entry.target.id;
+        const num = parseInt(id.replace('slide-', ''));
+        dots.forEach(d => d.classList.remove('active'));
+        const activeDot = document.querySelector(`.nav-dot[data-slide="${num}"]`);
+        if (activeDot) activeDot.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  slides.forEach(slide => observer.observe(slide));
+</script>
+
+</body>
+</html>

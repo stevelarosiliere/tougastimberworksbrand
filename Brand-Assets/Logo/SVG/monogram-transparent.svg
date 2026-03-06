@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <rect x="30" y="30" width="140" height="140" fill="none" stroke="#FAFAF9" stroke-width="2"/>
+  <rect x="38" y="38" width="124" height="124" fill="none" stroke="#FAFAF9" stroke-width="2"/>
+  <text x="100" y="110" text-anchor="middle" font-family="Oswald, Impact, sans-serif" font-weight="600" font-size="48" fill="#FAFAF9" letter-spacing="6">TTW</text>
+</svg>

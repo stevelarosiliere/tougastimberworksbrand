@@ -1,0 +1,1981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tougas Timberworks | Brand Style Guide — Direction C: The Heritage</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ============================================
+     RESET & BASE
+     ============================================ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    font-family: 'Lora', serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.7;
+    color: #FAFAF9;
+    background: #292524;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============================================
+     CSS VARIABLES
+     ============================================ */
+  :root {
+    --dark: #292524;
+    --deep: #1C1917;
+    --light: #FAFAF9;
+    --amber: #B45309;
+    --green: #365314;
+    --gray: #78716C;
+    --font-display: 'Oswald', sans-serif;
+    --font-body: 'Lora', serif;
+  }
+
+  /* ============================================
+     TOP NAV
+     ============================================ */
+  .top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: var(--deep);
+    border-bottom: 2px solid var(--amber);
+    padding: 0 40px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .top-nav .nav-brand {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--light);
+  }
+  .top-nav .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .top-nav .nav-links a {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .top-nav .nav-links a:hover { color: var(--amber); }
+
+  /* ============================================
+     SECTIONS
+     ============================================ */
+  section {
+    padding: 100px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-deep { background: var(--deep); max-width: 100%; padding-left: 0; padding-right: 0; }
+  .section-deep .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 60px; }
+  .section-dark { background: var(--dark); }
+
+  .section-label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 48px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--light);
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  .section-subtitle {
+    font-family: var(--font-body);
+    font-size: 20px;
+    color: var(--gray);
+    max-width: 600px;
+    line-height: 1.7;
+  }
+  .divider {
+    width: 60px;
+    height: 3px;
+    background: var(--amber);
+    margin: 40px 0;
+  }
+
+  /* ============================================
+     COVER / HERO
+     ============================================ */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--deep);
+    padding-top: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(180,83,9,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Badge Lockup */
+  .badge {
+    display: inline-block;
+    border: 3px solid var(--light);
+    padding: 8px;
+    position: relative;
+  }
+  .badge-inner {
+    border: 1px solid var(--light);
+    padding: 32px 56px;
+    text-align: center;
+  }
+  .badge-top-line {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 8px;
+  }
+  .badge-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 42px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: var(--light);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .badge-rule {
+    width: 100%;
+    height: 1px;
+    background: var(--gray);
+    margin: 12px 0;
+  }
+  .badge-tagline {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+  .cover-tagline {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 20px;
+    color: var(--gray);
+    margin-top: 48px;
+    letter-spacing: 1px;
+  }
+  .cover-direction {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-top: 60px;
+    opacity: 0.5;
+  }
+
+  /* ============================================
+     COLOR PALETTE
+     ============================================ */
+  .palette-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .color-swatch {
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s;
+    border: 1px solid rgba(250,250,249,0.08);
+  }
+  .color-swatch:hover { transform: translateY(-4px); }
+  .color-swatch .swatch-block {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .color-swatch .swatch-info {
+    padding: 16px 20px;
+    background: var(--deep);
+  }
+  .color-swatch .swatch-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 4px;
+  }
+  .color-swatch .swatch-hex {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--gray);
+  }
+  .color-swatch .swatch-role {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--gray);
+    opacity: 0.7;
+    margin-top: 2px;
+  }
+  .copy-toast {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--amber);
+    color: var(--light);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 12px 28px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: all 0.3s;
+    pointer-events: none;
+    z-index: 9999;
+  }
+  .copy-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* ============================================
+     TYPOGRAPHY
+     ============================================ */
+  .type-specimen {
+    margin-top: 48px;
+  }
+  .type-group {
+    margin-bottom: 56px;
+  }
+  .type-group-label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(250,250,249,0.08);
+  }
+  .type-sample-display {
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--light);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .type-meta {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--gray);
+    margin-bottom: 32px;
+  }
+  .type-sample-body {
+    font-family: var(--font-body);
+    color: var(--light);
+    line-height: 1.8;
+    max-width: 640px;
+  }
+  .type-sample-body-italic {
+    font-family: var(--font-body);
+    font-style: italic;
+    color: var(--gray);
+    line-height: 1.8;
+    max-width: 640px;
+  }
+  .type-scale {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0;
+  }
+  .type-scale-row {
+    display: contents;
+  }
+  .type-scale-label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+    padding: 16px 0;
+    border-top: 1px solid rgba(250,250,249,0.06);
+    display: flex;
+    align-items: center;
+  }
+  .type-scale-sample {
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--light);
+    padding: 16px 0;
+    border-top: 1px solid rgba(250,250,249,0.06);
+    display: flex;
+    align-items: center;
+    letter-spacing: 2px;
+  }
+
+  /* ============================================
+     LOGO SYSTEM
+     ============================================ */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 48px;
+  }
+  .logo-card {
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(250,250,249,0.08);
+  }
+  .logo-card-display {
+    min-height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+  }
+  .logo-card-info {
+    padding: 20px 24px;
+    background: var(--deep);
+    border-top: 1px solid rgba(250,250,249,0.06);
+  }
+  .logo-card-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 4px;
+  }
+  .logo-card-desc {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--gray);
+  }
+
+  /* Badge Variants */
+  .badge-sm {
+    display: inline-block;
+    border: 2px solid currentColor;
+    padding: 5px;
+  }
+  .badge-sm .badge-sm-inner {
+    border: 1px solid currentColor;
+    padding: 16px 28px;
+    text-align: center;
+  }
+  .badge-sm .badge-sm-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .badge-sm .badge-sm-rule {
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.4;
+    margin: 8px 0;
+  }
+  .badge-sm .badge-sm-tagline {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 9px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+  }
+
+  /* Stacked Badge */
+  .badge-stacked {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid currentColor;
+    padding: 6px;
+  }
+  .badge-stacked-inner {
+    border: 1px solid currentColor;
+    padding: 24px 28px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .badge-stacked-word {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 28px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    line-height: 1.1;
+  }
+  .badge-stacked-rule {
+    width: 40px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.4;
+    margin: 6px 0;
+  }
+  .badge-stacked-sub {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 9px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+  }
+
+  /* Monogram */
+  .monogram {
+    width: 120px;
+    height: 120px;
+    border: 3px solid currentColor;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .monogram::after {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+  }
+  .monogram span {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 32px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Burn Stamp */
+  .burn-stamp {
+    display: inline-block;
+    border: 2px solid currentColor;
+    padding: 14px 24px;
+    text-align: center;
+  }
+  .burn-stamp-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .burn-stamp-sub {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 8px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-top: 4px;
+    opacity: 0.7;
+  }
+
+  /* Favicon Grid */
+  .favicon-grid {
+    display: flex;
+    gap: 32px;
+    align-items: end;
+    margin-top: 32px;
+  }
+  .favicon-item {
+    text-align: center;
+  }
+  .favicon-box {
+    background: var(--deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(250,250,249,0.08);
+    border-radius: 4px;
+    margin-bottom: 8px;
+    color: var(--light);
+  }
+  .favicon-label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gray);
+  }
+
+  /* Social Avatar */
+  .social-avatar {
+    width: 200px;
+    height: 200px;
+    background: var(--deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: 1px solid rgba(250,250,249,0.08);
+    color: var(--light);
+  }
+
+  /* ============================================
+     APPLICATIONS
+     ============================================ */
+  .app-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 48px;
+  }
+  .app-card {
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(250,250,249,0.08);
+  }
+  .app-card-display {
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    position: relative;
+  }
+  .app-card-info {
+    padding: 20px 24px;
+    background: var(--deep);
+    border-top: 1px solid rgba(250,250,249,0.06);
+  }
+  .app-card-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 4px;
+  }
+  .app-card-desc {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--gray);
+  }
+
+  /* T-Shirt Mockup */
+  .tshirt-mockup {
+    width: 220px;
+    height: 260px;
+    background: #1a1a1a;
+    border-radius: 4px 4px 0 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tshirt-mockup::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 20px;
+    border-radius: 0 0 25px 25px;
+    background: var(--dark);
+  }
+  .tshirt-mockup .badge-sm { color: var(--light); transform: scale(0.7); margin-top: 10px; }
+
+  /* Truck Panel */
+  .truck-panel {
+    width: 320px;
+    height: 160px;
+    background: #2a2a2a;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-bottom: 4px solid #1a1a1a;
+  }
+  .truck-panel::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid #444;
+    background: #333;
+  }
+  .truck-panel .badge-sm { color: var(--light); transform: scale(0.65); }
+
+  /* Business Card */
+  .bcard {
+    width: 320px;
+    perspective: 800px;
+  }
+  .bcard-front {
+    width: 100%;
+    height: 190px;
+    background: var(--deep);
+    border: 1px solid rgba(250,250,249,0.08);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  .bcard-back {
+    width: 100%;
+    height: 190px;
+    background: var(--deep);
+    border: 1px solid rgba(250,250,249,0.08);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 28px 32px;
+  }
+  .bcard-back-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 2px;
+  }
+  .bcard-back-title {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--amber);
+    margin-bottom: 16px;
+  }
+  .bcard-back-line {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--gray);
+    line-height: 1.8;
+  }
+
+  /* Wood Burn */
+  .wood-surface {
+    width: 240px;
+    height: 160px;
+    background: linear-gradient(135deg, #8B6914 0%, #6B5210 30%, #8B6914 50%, #5C4510 80%, #7A5C12 100%);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .wood-surface::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg, transparent, transparent 8px, rgba(0,0,0,0.03) 8px, rgba(0,0,0,0.03) 9px);
+  }
+  .wood-surface .burn-stamp {
+    color: #3a2a10;
+    border-color: #3a2a10;
+    position: relative;
+    z-index: 1;
+    transform: scale(0.85);
+  }
+
+  /* Shop Sign */
+  .shop-sign {
+    width: 340px;
+    background: var(--deep);
+    padding: 40px;
+    text-align: center;
+    border: 3px solid var(--amber);
+    position: relative;
+  }
+  .shop-sign::before,
+  .shop-sign::after {
+    content: '';
+    position: absolute;
+    top: -12px;
+    width: 20px;
+    height: 20px;
+    background: var(--gray);
+    border-radius: 50%;
+    border: 2px solid var(--amber);
+  }
+  .shop-sign::before { left: 40px; }
+  .shop-sign::after { right: 40px; }
+  .shop-sign .badge-sm { color: var(--light); }
+
+  /* Sticker */
+  .sticker-mockup {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: var(--deep);
+    border: 2px solid var(--amber);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light);
+  }
+
+  /* Social Header */
+  .social-header {
+    width: 360px;
+    height: 120px;
+    background: var(--deep);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(250,250,249,0.08);
+    position: relative;
+    overflow: hidden;
+  }
+  .social-header::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--amber), var(--green));
+  }
+
+  /* Invoice */
+  .invoice-mockup {
+    width: 300px;
+    background: var(--light);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .invoice-header {
+    background: var(--deep);
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .invoice-body {
+    padding: 24px 28px;
+    color: var(--deep);
+  }
+  .invoice-body .inv-label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 4px;
+  }
+  .invoice-body .inv-value {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--deep);
+    margin-bottom: 16px;
+  }
+  .invoice-body .inv-line {
+    height: 1px;
+    background: #e5e5e5;
+    margin: 12px 0;
+  }
+  .invoice-body .inv-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--deep);
+    padding: 4px 0;
+  }
+  .invoice-body .inv-total {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: var(--deep);
+  }
+
+  /* Email Sig */
+  .email-sig {
+    background: var(--light);
+    padding: 20px 24px;
+    border-radius: 4px;
+    border-left: 3px solid var(--amber);
+    max-width: 340px;
+  }
+  .email-sig-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--deep);
+    margin-bottom: 2px;
+  }
+  .email-sig-title {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--amber);
+    margin-bottom: 10px;
+  }
+  .email-sig-line {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* ============================================
+     VOICE
+     ============================================ */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 48px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .voice-header {
+    padding: 16px 24px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  .voice-header.say-this { background: var(--green); color: var(--light); }
+  .voice-header.not-this { background: #7f1d1d; color: var(--light); }
+  .voice-row {
+    display: contents;
+  }
+  .voice-cell {
+    padding: 16px 24px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    border-bottom: 1px solid rgba(250,250,249,0.06);
+  }
+  .voice-cell.good { background: rgba(54,83,20,0.12); color: var(--light); }
+  .voice-cell.bad { background: rgba(127,29,29,0.12); color: var(--gray); }
+
+  /* ============================================
+     PHOTOGRAPHY
+     ============================================ */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 48px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .photo-card {
+    height: 200px;
+    display: flex;
+    align-items: flex-end;
+    padding: 16px;
+    position: relative;
+    background: var(--deep);
+    border: 1px solid rgba(250,250,249,0.04);
+  }
+  .photo-card-icon {
+    font-size: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.15;
+  }
+  .photo-card-label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--amber);
+    position: relative;
+    z-index: 1;
+  }
+  .photo-card-desc {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--gray);
+    position: relative;
+    z-index: 1;
+  }
+  .photo-guidelines {
+    margin-top: 32px;
+  }
+  .photo-guidelines li {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--gray);
+    margin-bottom: 8px;
+    margin-left: 20px;
+  }
+
+  /* ============================================
+     WEBSITE PREVIEW
+     ============================================ */
+  .web-preview {
+    margin-top: 48px;
+    border: 1px solid rgba(250,250,249,0.08);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .web-browser-bar {
+    background: var(--deep);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(250,250,249,0.06);
+  }
+  .web-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(250,250,249,0.15);
+  }
+  .web-url {
+    flex: 1;
+    margin-left: 12px;
+    background: rgba(250,250,249,0.06);
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--gray);
+  }
+  .web-hero {
+    background: var(--deep);
+    padding: 80px 60px;
+    text-align: center;
+    position: relative;
+  }
+  .web-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(180,83,9,0.04) 0%, transparent 70%);
+  }
+  .web-hero .badge-sm { color: var(--light); position: relative; z-index: 1; }
+  .web-hero-tagline {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--gray);
+    margin-top: 28px;
+    position: relative;
+    z-index: 1;
+  }
+  .web-hero-cta {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 14px 36px;
+    background: var(--amber);
+    color: var(--light);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    position: relative;
+    z-index: 1;
+  }
+  .web-services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid rgba(250,250,249,0.06);
+  }
+  .web-service-card {
+    padding: 40px 32px;
+    text-align: center;
+    border-right: 1px solid rgba(250,250,249,0.06);
+    background: var(--dark);
+  }
+  .web-service-card:last-child { border-right: none; }
+  .web-service-icon {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 28px;
+    color: var(--amber);
+    margin-bottom: 12px;
+  }
+  .web-service-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 8px;
+  }
+  .web-service-desc {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+  .web-about {
+    background: var(--deep);
+    padding: 48px 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    border-top: 1px solid rgba(250,250,249,0.06);
+  }
+  .web-about-label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+  .web-about-heading {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 28px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .web-about-text {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--gray);
+    line-height: 1.8;
+  }
+  .web-about-placeholder {
+    height: 200px;
+    background: var(--dark);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+    opacity: 0.4;
+  }
+
+  /* ============================================
+     FOOTER
+     ============================================ */
+  .style-footer {
+    text-align: center;
+    padding: 60px;
+    border-top: 1px solid rgba(250,250,249,0.06);
+  }
+  .style-footer p {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+  .style-footer .footer-tagline {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--gray);
+    margin-top: 12px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  /* ============================================
+     FULL-WIDTH HELPERS
+     ============================================ */
+  .full-width {
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .full-width .fw-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+
+  /* ============================================
+     RESPONSIVE
+     ============================================ */
+  @media (max-width: 900px) {
+    section { padding: 60px 24px; }
+    .palette-grid { grid-template-columns: 1fr 1fr; }
+    .logo-grid, .app-grid { grid-template-columns: 1fr; }
+    .voice-grid { grid-template-columns: 1fr; }
+    .photo-grid { grid-template-columns: 1fr 1fr; }
+    .web-services { grid-template-columns: 1fr; }
+    .web-about { grid-template-columns: 1fr; }
+    .badge-name { font-size: 28px; letter-spacing: 5px; }
+    .badge-inner { padding: 24px 32px; }
+    .section-title { font-size: 36px; }
+    .top-nav .nav-links { display: none; }
+    .section-deep .section-inner { padding: 0 24px; }
+    .full-width .fw-inner { padding: 0 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================
+     TOP NAVIGATION
+     ============================================ -->
+<nav class="top-nav">
+  <div class="nav-brand">Tougas Timberworks</div>
+  <ul class="nav-links">
+    <li><a href="#colors">Colors</a></li>
+    <li><a href="#typography">Type</a></li>
+    <li><a href="#logo">Logo</a></li>
+    <li><a href="#applications">Applications</a></li>
+    <li><a href="#voice">Voice</a></li>
+    <li><a href="#photography">Photo</a></li>
+    <li><a href="#website">Website</a></li>
+  </ul>
+</nav>
+
+<!-- ============================================
+     01 — COVER
+     ============================================ -->
+<section class="cover">
+  <div class="badge">
+    <div class="badge-inner">
+      <div class="badge-top-line">Est. New England</div>
+      <div class="badge-name">Tougas<br>Timberworks</div>
+      <div class="badge-rule"></div>
+      <div class="badge-tagline">Mill. Dry. Build.</div>
+    </div>
+  </div>
+  <div class="cover-tagline">Built by hand. Backed by name.</div>
+  <div class="cover-direction">Direction C &mdash; The Heritage</div>
+</section>
+
+<!-- ============================================
+     02 — COLOR PALETTE
+     ============================================ -->
+<section class="section-deep" id="colors">
+  <div class="section-inner">
+    <div class="section-label">02 / Color Palette</div>
+    <div class="section-title">Grounded in Dark,<br>Lit by Fire</div>
+    <div class="section-subtitle">A dark-mode palette built for weight and warmth. Burnt amber and forest green anchor the brand in the outdoors without tipping into rustic.</div>
+    <div class="palette-grid">
+      <div class="color-swatch" onclick="copyHex('#292524')">
+        <div class="swatch-block" style="background:#292524; border: 1px solid rgba(250,250,249,0.15);">
+          <span style="color:#FAFAF9; font-family:var(--font-display); font-weight:600; font-size:13px; letter-spacing:3px;">Aa</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Dark Brown</div>
+          <div class="swatch-hex">#292524</div>
+          <div class="swatch-role">Background / Primary Dark</div>
+        </div>
+      </div>
+      <div class="color-swatch" onclick="copyHex('#1C1917')">
+        <div class="swatch-block" style="background:#1C1917; border: 1px solid rgba(250,250,249,0.1);">
+          <span style="color:#FAFAF9; font-family:var(--font-display); font-weight:600; font-size:13px; letter-spacing:3px;">Aa</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Near Black</div>
+          <div class="swatch-hex">#1C1917</div>
+          <div class="swatch-role">Deep Dark</div>
+        </div>
+      </div>
+      <div class="color-swatch" onclick="copyHex('#FAFAF9')">
+        <div class="swatch-block" style="background:#FAFAF9;">
+          <span style="color:#1C1917; font-family:var(--font-display); font-weight:600; font-size:13px; letter-spacing:3px;">Aa</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Off White</div>
+          <div class="swatch-hex">#FAFAF9</div>
+          <div class="swatch-role">Light / Text on Dark</div>
+        </div>
+      </div>
+      <div class="color-swatch" onclick="copyHex('#B45309')">
+        <div class="swatch-block" style="background:#B45309;">
+          <span style="color:#FAFAF9; font-family:var(--font-display); font-weight:600; font-size:13px; letter-spacing:3px;">Aa</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Burnt Amber</div>
+          <div class="swatch-hex">#B45309</div>
+          <div class="swatch-role">Primary Accent</div>
+        </div>
+      </div>
+      <div class="color-swatch" onclick="copyHex('#365314')">
+        <div class="swatch-block" style="background:#365314;">
+          <span style="color:#FAFAF9; font-family:var(--font-display); font-weight:600; font-size:13px; letter-spacing:3px;">Aa</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Forest Green</div>
+          <div class="swatch-hex">#365314</div>
+          <div class="swatch-role">Secondary Accent</div>
+        </div>
+      </div>
+      <div class="color-swatch" onclick="copyHex('#78716C')">
+        <div class="swatch-block" style="background:#78716C;">
+          <span style="color:#FAFAF9; font-family:var(--font-display); font-weight:600; font-size:13px; letter-spacing:3px;">Aa</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Warm Gray</div>
+          <div class="swatch-hex">#78716C</div>
+          <div class="swatch-role">Neutral</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     03 — TYPOGRAPHY
+     ============================================ -->
+<section id="typography">
+  <div class="section-label">03 / Typography</div>
+  <div class="section-title">Two Weights.<br>One Voice.</div>
+  <div class="section-subtitle">Oswald carries the weight. Lora carries the story. Condensed display meets warm serif body.</div>
+
+  <div class="type-specimen">
+    <div class="type-group">
+      <div class="type-group-label">Display &mdash; Oswald 600</div>
+      <div class="type-sample-display" style="font-size:72px; letter-spacing:6px;">TIMBERWORKS</div>
+      <div class="type-meta">72px / Uppercase / Letter-spacing 6px</div>
+
+      <div class="type-sample-display" style="font-size:48px; letter-spacing:4px;">MILL. DRY. BUILD.</div>
+      <div class="type-meta">48px / Uppercase / Letter-spacing 4px</div>
+
+      <div class="type-sample-display" style="font-size:32px; letter-spacing:3px;">BUILT BY HAND. BACKED BY NAME.</div>
+      <div class="type-meta">32px / Uppercase / Letter-spacing 3px</div>
+
+      <div class="type-sample-display" style="font-size:14px; letter-spacing:4px;">BADGES / LABELS / NAVIGATION</div>
+      <div class="type-meta">14px / Uppercase / Letter-spacing 4px / Used for UI elements</div>
+    </div>
+
+    <div class="type-group">
+      <div class="type-group-label">Body &mdash; Lora 400</div>
+      <div class="type-sample-body" style="font-size:20px;">
+        Every board that leaves this shop has a name behind it. Not a brand. Not a logo. A person who milled it, dried it, and built something that lasts.
+      </div>
+      <div class="type-meta" style="margin-top:8px;">20px / Regular / Line-height 1.8</div>
+
+      <div class="type-sample-body" style="font-size:16px; margin-top:24px;">
+        Tougas Timberworks is a vertically integrated timber operation. Raw logs come in, finished products go out. Milling, kiln-drying, planing, and custom fabrication, all under one roof. The kind of shop where the owner answers the phone and knows every piece of wood by sight.
+      </div>
+      <div class="type-meta" style="margin-top:8px;">16px / Regular / Line-height 1.8</div>
+
+      <div class="type-sample-body-italic" style="font-size:18px; margin-top:24px;">
+        "We don't outsource anything. If it has our name on it, we touched every step."
+      </div>
+      <div class="type-meta" style="margin-top:8px;">18px / Italic / Pullquotes and captions</div>
+    </div>
+
+    <div class="type-group">
+      <div class="type-group-label">Type Scale</div>
+      <div class="type-scale">
+        <div class="type-scale-row">
+          <div class="type-scale-label">H1</div>
+          <div class="type-scale-sample" style="font-size:48px; letter-spacing:4px;">TIMBERWORKS</div>
+        </div>
+        <div class="type-scale-row">
+          <div class="type-scale-label">H2</div>
+          <div class="type-scale-sample" style="font-size:36px; letter-spacing:3px;">MILL. DRY. BUILD.</div>
+        </div>
+        <div class="type-scale-row">
+          <div class="type-scale-label">H3</div>
+          <div class="type-scale-sample" style="font-size:24px; letter-spacing:3px;">CUSTOM MILLING</div>
+        </div>
+        <div class="type-scale-row">
+          <div class="type-scale-label">LABEL</div>
+          <div class="type-scale-sample" style="font-size:12px; letter-spacing:4px;">SECTION LABEL</div>
+        </div>
+        <div class="type-scale-row">
+          <div class="type-scale-label">BODY</div>
+          <div class="type-scale-sample" style="font-family:var(--font-body); text-transform:none; letter-spacing:0; font-weight:400; font-size:18px;">Every board has a name behind it.</div>
+        </div>
+        <div class="type-scale-row">
+          <div class="type-scale-label">SMALL</div>
+          <div class="type-scale-sample" style="font-family:var(--font-body); text-transform:none; letter-spacing:0; font-weight:400; font-size:14px;">Caption and metadata text</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     04 — LOGO SYSTEM
+     ============================================ -->
+<section class="section-deep" id="logo">
+  <div class="section-inner">
+    <div class="section-label">04 / Logo System</div>
+    <div class="section-title">Badge-Driven.<br>Built to Brand.</div>
+    <div class="section-subtitle">The logo is a badge, not a wordmark. Double-border treatment gives visual weight at any size. Designed for labels, patches, stamps, and vehicle graphics.</div>
+
+    <div class="logo-grid">
+      <!-- Primary Badge — Light on Dark -->
+      <div class="logo-card">
+        <div class="logo-card-display" style="background:#1C1917;">
+          <div class="badge-sm" style="color:#FAFAF9;">
+            <div class="badge-sm-inner">
+              <div style="font-family:var(--font-display);font-weight:600;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--gray);margin-bottom:4px;">Est. New England</div>
+              <div class="badge-sm-name">TOUGAS<br>TIMBERWORKS</div>
+              <div class="badge-sm-rule"></div>
+              <div class="badge-sm-tagline" style="color:var(--amber);">Mill. Dry. Build.</div>
+            </div>
+          </div>
+        </div>
+        <div class="logo-card-info">
+          <div class="logo-card-title">Primary Badge &mdash; Light on Dark</div>
+          <div class="logo-card-desc">Default usage. Off White badge on Near Black or Dark Brown backgrounds.</div>
+        </div>
+      </div>
+
+      <!-- Primary Badge — Dark on Light -->
+      <div class="logo-card">
+        <div class="logo-card-display" style="background:#FAFAF9;">
+          <div class="badge-sm" style="color:#1C1917;">
+            <div class="badge-sm-inner">
+              <div style="font-family:var(--font-display);font-weight:600;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--gray);margin-bottom:4px;">Est. New England</div>
+              <div class="badge-sm-name">TOUGAS<br>TIMBERWORKS</div>
+              <div class="badge-sm-rule"></div>
+              <div class="badge-sm-tagline" style="color:var(--amber);">Mill. Dry. Build.</div>
+            </div>
+          </div>
+        </div>
+        <div class="logo-card-info">
+          <div class="logo-card-title">Primary Badge &mdash; Dark on Light</div>
+          <div class="logo-card-desc">Reverse application. Near Black badge on Off White backgrounds.</div>
+        </div>
+      </div>
+
+      <!-- Stacked Badge — Light on Dark -->
+      <div class="logo-card">
+        <div class="logo-card-display" style="background:#1C1917;">
+          <div class="badge-stacked" style="color:#FAFAF9;">
+            <div class="badge-stacked-inner">
+              <div class="badge-stacked-word">TOUGAS</div>
+              <div class="badge-stacked-word" style="font-size:18px; letter-spacing:8px;">TIMBER</div>
+              <div class="badge-stacked-word" style="font-size:18px; letter-spacing:8px;">WORKS</div>
+              <div class="badge-stacked-rule"></div>
+              <div class="badge-stacked-sub" style="color:var(--amber);">Mill. Dry. Build.</div>
+            </div>
+          </div>
+        </div>
+        <div class="logo-card-info">
+          <div class="logo-card-title">Stacked Badge</div>
+          <div class="logo-card-desc">Square format. Social avatars, patches, stamps, tight layouts.</div>
+        </div>
+      </div>
+
+      <!-- Stacked Badge — Dark on Light -->
+      <div class="logo-card">
+        <div class="logo-card-display" style="background:#FAFAF9;">
+          <div class="badge-stacked" style="color:#1C1917;">
+            <div class="badge-stacked-inner">
+              <div class="badge-stacked-word">TOUGAS</div>
+              <div class="badge-stacked-word" style="font-size:18px; letter-spacing:8px;">TIMBER</div>
+              <div class="badge-stacked-word" style="font-size:18px; letter-spacing:8px;">WORKS</div>
+              <div class="badge-stacked-rule"></div>
+              <div class="badge-stacked-sub" style="color:var(--amber);">Mill. Dry. Build.</div>
+            </div>
+          </div>
+        </div>
+        <div class="logo-card-info">
+          <div class="logo-card-title">Stacked Badge &mdash; Reverse</div>
+          <div class="logo-card-desc">Dark version for light backgrounds. Print, packaging, invoices.</div>
+        </div>
+      </div>
+
+      <!-- Monogram — Light on Dark -->
+      <div class="logo-card">
+        <div class="logo-card-display" style="background:#1C1917;">
+          <div class="monogram" style="color:#FAFAF9;">
+            <span>TTW</span>
+          </div>
+        </div>
+        <div class="logo-card-info">
+          <div class="logo-card-title">Monogram Badge</div>
+          <div class="logo-card-desc">Compact mark. Favicons, app icons, hardware branding, social thumbnails.</div>
+        </div>
+      </div>
+
+      <!-- Monogram — Dark on Light -->
+      <div class="logo-card">
+        <div class="logo-card-display" style="background:#FAFAF9;">
+          <div class="monogram" style="color:#1C1917;">
+            <span>TTW</span>
+          </div>
+        </div>
+        <div class="logo-card-info">
+          <div class="logo-card-title">Monogram Badge &mdash; Reverse</div>
+          <div class="logo-card-desc">Near Black monogram for light contexts.</div>
+        </div>
+      </div>
+
+      <!-- Burn Stamp — Light -->
+      <div class="logo-card">
+        <div class="logo-card-display" style="background:#1C1917;">
+          <div class="burn-stamp" style="color:#FAFAF9;">
+            <div class="burn-stamp-name">TOUGAS TIMBERWORKS</div>
+            <div class="burn-stamp-sub">Mill. Dry. Build.</div>
+          </div>
+        </div>
+        <div class="logo-card-info">
+          <div class="logo-card-title">Burn Stamp</div>
+          <div class="logo-card-desc">Simplified for wood burning. Single weight, no double border. Maximum clarity at small sizes.</div>
+        </div>
+      </div>
+
+      <!-- Burn Stamp — On Wood -->
+      <div class="logo-card">
+        <div class="logo-card-display" style="background: linear-gradient(135deg, #8B6914 0%, #6B5210 30%, #8B6914 50%, #5C4510 80%, #7A5C12 100%); position:relative; overflow:hidden;">
+          <div style="position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 8px,rgba(0,0,0,0.03) 8px,rgba(0,0,0,0.03) 9px);"></div>
+          <div class="burn-stamp" style="color:#3a2a10; border-color:#3a2a10; position:relative; z-index:1;">
+            <div class="burn-stamp-name">TOUGAS TIMBERWORKS</div>
+            <div class="burn-stamp-sub">Mill. Dry. Build.</div>
+          </div>
+        </div>
+        <div class="logo-card-info">
+          <div class="logo-card-title">Burn Stamp &mdash; On Wood</div>
+          <div class="logo-card-desc">Actual burn application preview. Branded on finished lumber and products.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Favicons -->
+    <div style="margin-top:64px;">
+      <div class="type-group-label" style="font-family:var(--font-display);font-weight:600;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--amber);margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid rgba(250,250,249,0.08);">Favicon &amp; Icon Sizes</div>
+      <div class="favicon-grid">
+        <div class="favicon-item">
+          <div class="favicon-box" style="width:16px;height:16px;font-size:6px;">
+            <span style="font-family:var(--font-display);font-weight:600;letter-spacing:1px;font-size:5px;">T</span>
+          </div>
+          <div class="favicon-label">16px</div>
+        </div>
+        <div class="favicon-item">
+          <div class="favicon-box" style="width:32px;height:32px;">
+            <span style="font-family:var(--font-display);font-weight:600;letter-spacing:2px;font-size:10px;">TTW</span>
+          </div>
+          <div class="favicon-label">32px</div>
+        </div>
+        <div class="favicon-item">
+          <div class="favicon-box" style="width:48px;height:48px;border-radius:8px;">
+            <span style="font-family:var(--font-display);font-weight:600;letter-spacing:2px;font-size:14px;">TTW</span>
+          </div>
+          <div class="favicon-label">48px</div>
+        </div>
+        <div class="favicon-item">
+          <div class="favicon-box" style="width:80px;height:80px;border-radius:12px;">
+            <span style="font-family:var(--font-display);font-weight:600;letter-spacing:3px;font-size:20px;">TTW</span>
+          </div>
+          <div class="favicon-label">80px</div>
+        </div>
+        <div class="favicon-item">
+          <div class="favicon-box" style="width:120px;height:120px;border-radius:16px;">
+            <span style="font-family:var(--font-display);font-weight:600;letter-spacing:4px;font-size:28px;">TTW</span>
+          </div>
+          <div class="favicon-label">180px</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Social Avatar -->
+    <div style="margin-top:48px;">
+      <div class="type-group-label" style="font-family:var(--font-display);font-weight:600;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--amber);margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid rgba(250,250,249,0.08);">Social Avatar</div>
+      <div style="display:flex;gap:32px;align-items:start;">
+        <div class="social-avatar">
+          <div class="badge-stacked" style="color:#FAFAF9;transform:scale(0.65);">
+            <div class="badge-stacked-inner">
+              <div class="badge-stacked-word">TOUGAS</div>
+              <div class="badge-stacked-word" style="font-size:18px; letter-spacing:8px;">TIMBER</div>
+              <div class="badge-stacked-word" style="font-size:18px; letter-spacing:8px;">WORKS</div>
+              <div class="badge-stacked-rule"></div>
+              <div class="badge-stacked-sub" style="color:var(--amber);">Mill. Dry. Build.</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding-top:8px;">
+          <div style="font-family:var(--font-display);font-weight:600;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--light);margin-bottom:8px;">Social Profile Image</div>
+          <div style="font-family:var(--font-body);font-size:14px;color:var(--gray);max-width:300px;line-height:1.7;">Stacked badge centered on Near Black square. Works across Instagram, Facebook, LinkedIn, and YouTube. Holds at thumbnail scale.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     05 — APPLICATIONS
+     ============================================ -->
+<section id="applications">
+  <div class="section-label">05 / Applications</div>
+  <div class="section-title">Everywhere the<br>Name Goes</div>
+  <div class="section-subtitle">From sawdust to screens. The badge system holds up across every surface and context.</div>
+
+  <div class="app-grid">
+    <!-- T-Shirt -->
+    <div class="app-card">
+      <div class="app-card-display" style="background:var(--deep);">
+        <div class="tshirt-mockup">
+          <div class="badge-sm" style="color:var(--light);">
+            <div class="badge-sm-inner">
+              <div class="badge-sm-name" style="font-size:14px; letter-spacing:3px;">TOUGAS<br>TIMBERWORKS</div>
+              <div class="badge-sm-rule"></div>
+              <div class="badge-sm-tagline" style="color:var(--amber);font-size:7px;letter-spacing:3px;">Mill. Dry. Build.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="app-card-info">
+        <div class="app-card-title">T-Shirt / Apparel</div>
+        <div class="app-card-desc">Light badge on dark garments. Left chest or center placement. Screen print or embroidery.</div>
+      </div>
+    </div>
+
+    <!-- Wood Burn -->
+    <div class="app-card">
+      <div class="app-card-display" style="background:var(--deep);">
+        <div class="wood-surface">
+          <div class="burn-stamp">
+            <div class="burn-stamp-name">TOUGAS TIMBERWORKS</div>
+            <div class="burn-stamp-sub">Mill. Dry. Build.</div>
+          </div>
+        </div>
+      </div>
+      <div class="app-card-info">
+        <div class="app-card-title">Wood Burn Stamp</div>
+        <div class="app-card-desc">Branded on every piece of finished lumber. Simplified mark for maximum burn clarity.</div>
+      </div>
+    </div>
+
+    <!-- Truck -->
+    <div class="app-card">
+      <div class="app-card-display" style="background:var(--deep);">
+        <div class="truck-panel">
+          <div class="badge-sm" style="color:var(--light);">
+            <div class="badge-sm-inner">
+              <div class="badge-sm-name" style="font-size:16px; letter-spacing:3px;">TOUGAS<br>TIMBERWORKS</div>
+              <div class="badge-sm-rule"></div>
+              <div class="badge-sm-tagline" style="color:var(--amber);">Mill. Dry. Build.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="app-card-info">
+        <div class="app-card-title">Truck Decal</div>
+        <div class="app-card-desc">Badge on dark panels. Vinyl cut or digital print. Badge holds from 50 feet.</div>
+      </div>
+    </div>
+
+    <!-- Business Card -->
+    <div class="app-card">
+      <div class="app-card-display" style="background:var(--deep); flex-direction:column;">
+        <div class="bcard">
+          <div class="bcard-front">
+            <div class="badge-sm" style="color:var(--light); transform:scale(0.65);">
+              <div class="badge-sm-inner">
+                <div style="font-family:var(--font-display);font-weight:600;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--gray);margin-bottom:4px;">Est. New England</div>
+                <div class="badge-sm-name">TOUGAS<br>TIMBERWORKS</div>
+                <div class="badge-sm-rule"></div>
+                <div class="badge-sm-tagline" style="color:var(--amber);">Mill. Dry. Build.</div>
+              </div>
+            </div>
+          </div>
+          <div class="bcard-back">
+            <div class="bcard-back-name">Eric Tougas</div>
+            <div class="bcard-back-title">Owner / Operator</div>
+            <div class="bcard-back-line">eric@tougastimberworks.com</div>
+            <div class="bcard-back-line">(555) 000-0000</div>
+            <div class="bcard-back-line">tougastimberworks.com</div>
+          </div>
+        </div>
+      </div>
+      <div class="app-card-info">
+        <div class="app-card-title">Business Card</div>
+        <div class="app-card-desc">Dark card stock. Badge front, contact back. Thick paper, square corners. Feels like a brand, not a hobby.</div>
+      </div>
+    </div>
+
+    <!-- Shop Sign -->
+    <div class="app-card">
+      <div class="app-card-display" style="background:var(--deep);">
+        <div class="shop-sign">
+          <div class="badge-sm" style="color:var(--light);">
+            <div class="badge-sm-inner">
+              <div class="badge-sm-name" style="font-size:20px; letter-spacing:4px;">TOUGAS<br>TIMBERWORKS</div>
+              <div class="badge-sm-rule"></div>
+              <div class="badge-sm-tagline" style="color:var(--amber);">Mill. Dry. Build.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="app-card-info">
+        <div class="app-card-title">Shop Sign</div>
+        <div class="app-card-desc">Exterior or interior. Metal panel with amber border. Mounted with visible hardware.</div>
+      </div>
+    </div>
+
+    <!-- Sticker -->
+    <div class="app-card">
+      <div class="app-card-display" style="background:var(--deep);">
+        <div class="sticker-mockup">
+          <div style="text-align:center;">
+            <div style="font-family:var(--font-display);font-weight:600;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--light);line-height:1.3;">TOUGAS<br>TIMBER<br>WORKS</div>
+            <div style="width:24px;height:1px;background:var(--amber);margin:6px auto;"></div>
+            <div style="font-family:var(--font-display);font-weight:600;font-size:6px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);">Mill. Dry. Build.</div>
+          </div>
+        </div>
+      </div>
+      <div class="app-card-info">
+        <div class="app-card-title">Sticker / Label</div>
+        <div class="app-card-desc">Die-cut circle. Applied to packaging, tools, hardhat, cooler. Amber border on dark ground.</div>
+      </div>
+    </div>
+
+    <!-- Social Header -->
+    <div class="app-card">
+      <div class="app-card-display" style="background:var(--deep);">
+        <div class="social-header">
+          <div class="badge-sm" style="color:var(--light); transform:scale(0.55);">
+            <div class="badge-sm-inner">
+              <div class="badge-sm-name" style="font-size:18px; letter-spacing:4px;">TOUGAS TIMBERWORKS</div>
+              <div class="badge-sm-rule"></div>
+              <div class="badge-sm-tagline" style="color:var(--amber);">Mill. Dry. Build.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="app-card-info">
+        <div class="app-card-title">Social Media Header</div>
+        <div class="app-card-desc">Badge centered on dark field. Amber-to-green gradient accent bar at bottom. Facebook, LinkedIn, YouTube.</div>
+      </div>
+    </div>
+
+    <!-- Invoice -->
+    <div class="app-card">
+      <div class="app-card-display" style="background:var(--deep);">
+        <div class="invoice-mockup">
+          <div class="invoice-header">
+            <div class="burn-stamp" style="color:var(--light);border-color:var(--light);transform:scale(0.7);transform-origin:left center;">
+              <div class="burn-stamp-name" style="font-size:12px;letter-spacing:3px;">TOUGAS TIMBERWORKS</div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-family:var(--font-display);font-weight:600;font-size:11px;letter-spacing:3px;color:var(--amber);text-transform:uppercase;">Invoice</div>
+              <div style="font-family:var(--font-body);font-size:11px;color:var(--gray);">#TT-2026-0312</div>
+            </div>
+          </div>
+          <div class="invoice-body">
+            <div class="inv-label">Bill To</div>
+            <div class="inv-value">Coastal Woodworking Co.</div>
+            <div class="inv-line"></div>
+            <div class="inv-row"><span>White Oak, 8/4, 200 BF</span><span>$1,800.00</span></div>
+            <div class="inv-row"><span>Kiln Drying (200 BF)</span><span>$300.00</span></div>
+            <div class="inv-row"><span>Planing S2S</span><span>$150.00</span></div>
+            <div class="inv-line"></div>
+            <div class="inv-row"><span class="inv-total">TOTAL</span><span class="inv-total">$2,250.00</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="app-card-info">
+        <div class="app-card-title">Invoice Header</div>
+        <div class="app-card-desc">Dark header with burn stamp mark. Clean body. Professional without being corporate.</div>
+      </div>
+    </div>
+
+    <!-- Email Signature -->
+    <div class="app-card" style="grid-column: 1 / -1;">
+      <div class="app-card-display" style="background:var(--deep); justify-content:center;">
+        <div class="email-sig">
+          <div class="email-sig-name">Eric Tougas</div>
+          <div class="email-sig-title">Owner / Operator, Tougas Timberworks</div>
+          <div class="email-sig-line">eric@tougastimberworks.com</div>
+          <div class="email-sig-line">(555) 000-0000</div>
+          <div class="email-sig-line" style="margin-top:8px; font-style:italic; color:#B45309;">Built by hand. Backed by name.</div>
+        </div>
+      </div>
+      <div class="app-card-info">
+        <div class="app-card-title">Email Signature</div>
+        <div class="app-card-desc">Light background card with amber left border. Tagline in italics. Clean, branded, not over-designed.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     06 — VOICE & TONE
+     ============================================ -->
+<section class="section-deep" id="voice">
+  <div class="section-inner">
+    <div class="section-label">06 / Voice &amp; Tone</div>
+    <div class="section-title">Say It Like<br>You Mean It</div>
+    <div class="section-subtitle">Direct. Confident. No fluff, no apology. The voice of someone who has been doing this long enough to not need to prove it.</div>
+
+    <div class="voice-grid">
+      <div class="voice-header say-this">Say This</div>
+      <div class="voice-header not-this">Not This</div>
+
+      <div class="voice-row">
+        <div class="voice-cell good">"We mill, dry, and build. Everything under one roof."</div>
+        <div class="voice-cell bad">"We offer a full suite of vertically integrated timber solutions."</div>
+      </div>
+      <div class="voice-row">
+        <div class="voice-cell good">"Our name is on every board."</div>
+        <div class="voice-cell bad">"We take pride in our commitment to quality craftsmanship."</div>
+      </div>
+      <div class="voice-row">
+        <div class="voice-cell good">"Built by hand. Backed by name."</div>
+        <div class="voice-cell bad">"Artisanally crafted with passion and dedication."</div>
+      </div>
+      <div class="voice-row">
+        <div class="voice-cell good">"Call Eric. He'll tell you what's in stock."</div>
+        <div class="voice-cell bad">"Contact our team for a complimentary consultation."</div>
+      </div>
+      <div class="voice-row">
+        <div class="voice-cell good">"White oak, kiln-dried, ready to ship."</div>
+        <div class="voice-cell bad">"Premium sustainably sourced hardwood selections."</div>
+      </div>
+      <div class="voice-row">
+        <div class="voice-cell good">"We don't outsource. If it has our name on it, we touched every step."</div>
+        <div class="voice-cell bad">"Our end-to-end process ensures consistent quality control."</div>
+      </div>
+      <div class="voice-row">
+        <div class="voice-cell good">"The wood speaks for itself."</div>
+        <div class="voice-cell bad">"We let our exceptional products do the talking."</div>
+      </div>
+      <div class="voice-row">
+        <div class="voice-cell good">"This isn't a hobby. This is the family name."</div>
+        <div class="voice-cell bad">"We're passionate artisans dedicated to our craft."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     07 — PHOTOGRAPHY
+     ============================================ -->
+<section id="photography">
+  <div class="section-label">07 / Photography Direction</div>
+  <div class="section-title">Documentary.<br>Not Decorated.</div>
+  <div class="section-subtitle">Real light, real work, real dust. No staging, no stock photos, no lifestyle fakery. Show the shop as it is.</div>
+
+  <div class="photo-grid">
+    <div class="photo-card">
+      <div class="photo-card-icon">&#9881;</div>
+      <div>
+        <div class="photo-card-label">The Process</div>
+        <div class="photo-card-desc">Milling, drying, planing in action</div>
+      </div>
+    </div>
+    <div class="photo-card">
+      <div class="photo-card-icon">&#9995;</div>
+      <div>
+        <div class="photo-card-label">The Hands</div>
+        <div class="photo-card-desc">Close-ups of hands on wood, tools, grain</div>
+      </div>
+    </div>
+    <div class="photo-card">
+      <div class="photo-card-icon">&#127795;</div>
+      <div>
+        <div class="photo-card-label">The Material</div>
+        <div class="photo-card-desc">Raw logs, stacked lumber, end grain detail</div>
+      </div>
+    </div>
+    <div class="photo-card">
+      <div class="photo-card-icon">&#127968;</div>
+      <div>
+        <div class="photo-card-label">The Shop</div>
+        <div class="photo-card-desc">Wide shots of the mill, equipment, space</div>
+      </div>
+    </div>
+    <div class="photo-card">
+      <div class="photo-card-icon">&#128588;</div>
+      <div>
+        <div class="photo-card-label">The People</div>
+        <div class="photo-card-desc">Eric at work, candid, no posed portraits</div>
+      </div>
+    </div>
+    <div class="photo-card">
+      <div class="photo-card-icon">&#10024;</div>
+      <div>
+        <div class="photo-card-label">The Finish</div>
+        <div class="photo-card-desc">Completed pieces, installed projects, details</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="photo-guidelines">
+    <div style="margin-top:32px; margin-bottom:16px; font-family:var(--font-display); font-weight:600; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--amber);">Guidelines</div>
+    <ul>
+      <li>Natural light preferred. Warm tones. Golden hour when possible.</li>
+      <li>Shallow depth of field for detail shots. Wide for environment.</li>
+      <li>Show sawdust, grain, texture. Let imperfection be the aesthetic.</li>
+      <li>Desaturate slightly in post. Warm shadows, not cool.</li>
+      <li>Never over-styled, never sterile, never stock-photo energy.</li>
+      <li>If it looks like a magazine ad, reshoot it.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================
+     08 — WEBSITE PREVIEW
+     ============================================ -->
+<section class="section-deep" id="website">
+  <div class="section-inner">
+    <div class="section-label">08 / Website Preview</div>
+    <div class="section-title">How It Lives<br>on Screen</div>
+    <div class="section-subtitle">Dark-mode default. Badge-forward. The website should feel like walking into the shop.</div>
+
+    <div class="web-preview">
+      <div class="web-browser-bar">
+        <div class="web-dot"></div>
+        <div class="web-dot"></div>
+        <div class="web-dot"></div>
+        <div class="web-url">tougastimberworks.com</div>
+      </div>
+
+      <!-- Hero -->
+      <div class="web-hero">
+        <div class="badge-sm" style="color:var(--light);">
+          <div class="badge-sm-inner">
+            <div style="font-family:var(--font-display);font-weight:600;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--gray);margin-bottom:4px;">Est. New England</div>
+            <div class="badge-sm-name" style="font-size:28px; letter-spacing:6px;">TOUGAS<br>TIMBERWORKS</div>
+            <div class="badge-sm-rule"></div>
+            <div class="badge-sm-tagline" style="color:var(--amber);">Mill. Dry. Build.</div>
+          </div>
+        </div>
+        <div class="web-hero-tagline">Built by hand. Backed by name.</div>
+        <a href="#" class="web-hero-cta" onclick="return false;">See the Work</a>
+      </div>
+
+      <!-- Services -->
+      <div class="web-services">
+        <div class="web-service-card">
+          <div class="web-service-icon" style="font-family:var(--font-display);font-weight:600;font-size:36px;letter-spacing:2px;">I</div>
+          <div class="web-service-name">Custom Milling</div>
+          <div class="web-service-desc">Logs to lumber, cut to your spec. Hardwoods and softwoods, any dimension.</div>
+        </div>
+        <div class="web-service-card">
+          <div class="web-service-icon" style="font-family:var(--font-display);font-weight:600;font-size:36px;letter-spacing:2px;">II</div>
+          <div class="web-service-name">Kiln Drying</div>
+          <div class="web-service-desc">Precision-dried to target moisture. Ready for furniture, flooring, construction.</div>
+        </div>
+        <div class="web-service-card">
+          <div class="web-service-icon" style="font-family:var(--font-display);font-weight:600;font-size:36px;letter-spacing:2px;">III</div>
+          <div class="web-service-name">Custom Build</div>
+          <div class="web-service-desc">Tables, mantels, beams, siding. From our mill to your project, start to finish.</div>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="web-about">
+        <div>
+          <div class="web-about-label">About</div>
+          <div class="web-about-heading">One Shop.<br>Every Step.</div>
+          <div class="web-about-text">Tougas Timberworks is a vertically integrated timber operation in New England. Raw logs come in, finished products go out. Milling, kiln-drying, planing, and custom fabrication, all under one roof. The kind of shop where the owner answers the phone and knows every piece of wood by sight.</div>
+        </div>
+        <div class="web-about-placeholder">[ SHOP PHOTO ]</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<div class="style-footer">
+  <div class="badge-sm" style="color:var(--gray); transform:scale(0.6); display:inline-block; margin-bottom:24px;">
+    <div class="badge-sm-inner">
+      <div class="badge-sm-name" style="font-size:14px; letter-spacing:3px;">TOUGAS<br>TIMBERWORKS</div>
+      <div class="badge-sm-rule"></div>
+      <div class="badge-sm-tagline" style="color:var(--amber);">Mill. Dry. Build.</div>
+    </div>
+  </div>
+  <p>Brand Style Guide &mdash; Direction C: The Heritage</p>
+  <p class="footer-tagline">Built by hand. Backed by name.</p>
+</div>
+
+<!-- ============================================
+     CLICK-TO-COPY TOAST
+     ============================================ -->
+<div class="copy-toast" id="copyToast">Copied!</div>
+
+<script>
+function copyHex(hex) {
+  navigator.clipboard.writeText(hex).then(function() {
+    var toast = document.getElementById('copyToast');
+    toast.textContent = 'Copied ' + hex;
+    toast.classList.add('show');
+    setTimeout(function() {
+      toast.classList.remove('show');
+    }, 1500);
+  });
+}
+</script>
+
+</body>
+</html>
